@@ -1,0 +1,38 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 23 févr. 2021, 08 h 49 min 11 s
+    Author     : Claude
+*/
+
+body {
+    font-family: Arial;
+}
+fieldset {
+    width: 70%;
+    margin-left: auto; /* Les marges réglées en auto centre l'élément dans son conteneur parent.*/
+    margin-right: auto;
+}
+label {
+    display: inline-block;
+    width: 30%;
+}
+form ul li {
+    list-style-type: none;
+}
+
+form ul li input {
+    margin-right: 20px;
+}
+
+form ul li label input {
+    float: right;
+}
+
+.checkbox {
+    display: inline-block;
+    width: 100px;
+}
