@@ -6,4 +6,4 @@ Ces démos répondent à des besoins précis d,apprentissage et correspondent à
 La plupart de ces fichiers ne répondent pas à des fonctionnalités. 
 
 ## Commentaires et branches
-Vous pouvez participer sous respecter des contributeurs et des objectifs du code.
+Vous pouvez participer sous respecter des contributeurs et des objectifs des démos.
