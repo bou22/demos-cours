@@ -1,0 +1,11 @@
+
+p {
+    width: 400px;
+    display: inline-block;
+}
+.p1 {
+    background-color: gold;
+}
+.p2 {
+    background-color: rgb(241, 131, 177);
+}
