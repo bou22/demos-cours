@@ -1,0 +1,1 @@
+Solution de l'exercice du 3 février 2021.
