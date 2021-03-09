@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--
+Démo sur l'introduction à Javascript et ses fonctions de bases.
+-->
+<html>
+    <head>
+        <title>Démo</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript">
+            //La porte de let et var est différente comme dans le code ci-dessous.
+            let variable1=10;
+            var variable2 = "Guy";
+            {
+                let variable1 = 8;
+                var variable2 = 9;
+            }
+            
+            console.log(variable2); //affiche 9
+            console.log(variable1); //affiche 10
+            
+            function guyLafleur(){
+                for (var i=0;i<20;i++){
+                    console.log(i);
+                }
+            }
+            //Javascript est faiblement typé: le type d'une variable
+            //peut changer dynamiquement sans erreur.
+            function jocelynBerube(){
+                let nom = "jocelyn";
+                if (nom == "jocelyn"){
+                    nom = 5; //passe d'une string à un entier
+                    console.log(nom+"4"); //affiche 54
+                    console.log(nom+"abc"); //affiche 5abc
+                }
+            }
+            
+        </script>
+    </head>
+    <body>
+        <p onmouseover="jocelynBerube()" onclick="guyLafleur();">Fonctions de base</p>
+         <script type="text/javascript">
+             //le texte est écrit directement à l'appel de la fonction.
+             document.write("<h1>Du texte</h1>");
+         </script>
+    </body>
+</html>
