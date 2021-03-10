@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Utilisation de l'objet Date de JavaScript</h1>
+        <p>Les méthodes de l'objet Date permettent la manipulation facile de dates.</p>
+        <form action="self" name="formDate" id="formDate">
+            <div>
+                <input type="button" value="<< Mois précédent" 
+                    onclick="laDate.value = enleverUnMois(formDate.dateNormalisee.value)"> 
+                
+                <input type="text" name="laDate" size="30">
+                <input type="hidden" name="dateNormalisee">
+                
+                <input type="button" value="Mois suivant >>" 
+                    onclick="laDate.value = ajouterUnMois(formDate.dateNormalisee.value)"> 
+            </div>
+        </form>
+    </body>
+    <script type="text/javascript" src="date.js">
+        //string enleverUnMois(date);
+        //string ajouterUnMois(date);
+        //formaterLaDate(date);
+    </script>
+    
+    <script type="text/javascript">
+        // Fixer la date au moment présent.
+        let d=new Date(Date.now());
+        //let d=new Date("Dec 25 2021 15:05:23 GMT-0500");
+        formDate.dateNormalisee.value = d;
+        console.log(formDate.dateNormalisee.value);
+        //document.formDate.laDate.value = d.toLocaleString('fr-CA');
+        document.formDate.laDate.value = formaterLaDate(new Date(formDate.dateNormalisee.value));
+  
+    </script>
+</html>

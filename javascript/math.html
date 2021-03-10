@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!--
+Démo vidéo de l'utilisation de l'objet Math de JavaScript.
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Objet Math</title>
+        <style type="text/css">
+            div {
+                margin-left: 50px;
+                margin-top: 50px;
+            }
+        </style>
+    </head>
+    <body>
+        <<h1>Utilisation de l'objet Math de JavaScript</h1>
+        <p>Les méthodes de l'objet Math de JavaScript sont statiques.</p>
+        <form action="self" name="formMath" id="formMath">
+            <div>
+                <input type="text" name="v1"> 
+                <input type="button" value="arrondir >>" 
+                    onclick="formMath.v2.value=arrondir(document.formMath)"> 
+                <input type="text" name="v2" size="10"></div>
+        </form>
+    </body>
+    <script type="text/javascript" src="math.js">
+        //int arrondir(formulaire);
+        //formMath.sortie.value=arrondir(document.formMath)
+    </script>
+</html>
