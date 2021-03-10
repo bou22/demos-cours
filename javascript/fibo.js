@@ -73,7 +73,7 @@ function fiboDom(max){
     console.log(window.document.forms[0].elements[0].value);
     
     //La valeur du champ texte est accessible en lecture/écriture.
-    window.document.f1.valeurMax.value = 200;
+    //window.document.f1.valeurMax.value = 200;
 
     return fiboGui(max);
     
