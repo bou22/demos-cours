@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<!--
+Démonstration de l'utilisation de la structure de données Array
+en JavaScript.
+-->
+<html>
+    <head>
+        <title>Utilisation de Array</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="array.js"></script>
+    </head>
+    <body>
+        <script type="text/javascript">
+            let groupe = ['Claude','Martin','Benoit','Stephane'];
+        </script>
+        <form name="formGroupe" action="self">
+            <div>
+                <input type="text" name="nom">
+                <input type="button" value="Ajouter le nom" onclick="groupe = ajouterLeNom(groupe, nom.value);">
+                <input type="button" value="Afficher le groupe" onclick="formGroupe.listeGroupe.innerHTML = extraireLeContenu(groupe);">
+            </div>
+            <hr>
+            <textarea name="listeGroupe" rows="20" cols="15"></textarea>
+        </form>
+    </body>
+</html>
