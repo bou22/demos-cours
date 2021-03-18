@@ -13,20 +13,41 @@ function setInputEmail(element){
     let petitFrere = caseCocher.parentNode.nextSibling; //Le voisin du parent
     let parent = petitFrere.parentNode;
     
+    //Les nouveaux div et input sont préparés et seront soit 
+    //ajoutés ou retirés de la structure selon l'état de la case à cocher.
     let nouveauDiv = document.createElement("div");
     nouveauDiv.setAttribute("class","col-6 col-12-mobilep");
-    let input = document.createElement("input");
-    input.setAttribute("type","email");
-    input.setAttribute("name","email");
-    input.setAttribute("id","email");
-    input.setAttribute("placeholder","Courriel");
-    nouveauDiv.appendChild(input);
+    nouveauDiv.setAttribute("id","divEmail")
+    let nouveauInput = document.createElement("input");
+    nouveauInput.setAttribute("type","email");
+    nouveauInput.setAttribute("name","email");
+    nouveauInput.setAttribute("id","email");
+    nouveauInput.setAttribute("placeholder","Courriel");
+    nouveauDiv.appendChild(nouveauInput);    
     
-    parent.insertBefore(nouveauDiv,petitFrere);
+    //Si le noeud n'existe pas et que la case a été cochée.
+    if (document.getElementById("email")== null && element.checked){
+        parent.insertBefore(nouveauDiv,petitFrere);
+    //Si la case est décochée.
+    } else if (!element.checked){
+        parent.removeChild(document.getElementById("divEmail"));
+    }
 }
 
+/*
+ * Le onchange de la case à cocher ajouter ou retire la désactivation
+ * du bouton.
+ */
 function activerLeBouton(){
     let bouton = document.getElementById("boutonSubmit");
-    bouton.removeAttribute("disabled");
+    
+    //Si l'attribut est à true, il est retiré.
+    if (bouton.hasAttribute("disabled")){
+        bouton.removeAttribute("disabled");
+    } else {
+        //S'il est à false il est ajouté.
+        bouton.setAttribute("disabled", "true");
+    }
+    
 }
 
