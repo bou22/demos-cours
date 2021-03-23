@@ -3,13 +3,11 @@
  */
 
 function setEvent(){
+
     let h = document.getElementById("h1");
-    h.addEventListener("mouseover",
-        function(e){
-            console.log(e);
-            e.currentTarget.style.backgroundColor = "yellow";
-            e.currentTarget.setAttribute("name","allo");
-        },
+    h.addEventListener(
+        "mouseover",            //https://developer.mozilla.org/en-US/docs/Web/API/Element#focus_events
+        alerter,
         true
     )
     h.addEventListener("mouseout",
@@ -21,5 +19,11 @@ function setEvent(){
 }
 
 function alerter(){
-    alert("Uo");
+    alert("You better watch this...");
+}
+
+
+function enleverEvent(){
+    let h = document.getElementById("h1");
+    h.removeEventListener("mouseover",alerter,true);
 }

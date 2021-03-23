@@ -8,9 +8,14 @@
         <meta charset="UTF-8">
         <title>Démonstration sur les événements</title>
     </head>
-    <body onload="setEvent();">
+    <body>
+        <input type="button" onclick="setEvent()" value="Enregistrer les événements sur h1">
+
         <h1 id="h1">Le texte est un header 1</h1>
+
         <p id="p1">Petit paragraphe.</p>
+
+        <input type="button" onclick="enleverEvent()" value="Retirer les événements sur h1">
 
     </body>
 </html>
