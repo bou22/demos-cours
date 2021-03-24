@@ -4,26 +4,40 @@
 
 function setEvent(){
 
-    let h = document.getElementById("h1");
-    h.addEventListener(
-        "mouseover",            //https://developer.mozilla.org/en-US/docs/Web/API/Element#focus_events
-        alerter,
+    let titre = document.getElementById("h1");
+    
+    titre.addEventListener(
+        "mouseover", //https://developer.mozilla.org/en-US/docs/Web/API/Element#focus_events
+        surligner,
         true
     )
-    h.addEventListener("mouseout",
-    function(e){
-        e.currentTarget.style.backgroundColor = "white";
-    },
+    titre.addEventListener(
+        "mouseout", //https://developer.mozilla.org/en-US/docs/Web/API/Element#focus_events
+        pasSurligner,
         true
     )
 }
 
+
 function alerter(){
-    alert("You better watch this...");
+    alert("Attention !");
 }
+
+
+
 
 
 function enleverEvent(){
-    let h = document.getElementById("h1");
-    h.removeEventListener("mouseover",alerter,true);
+
+    let titre = document.getElementById("h1");
+
+    titre.removeEventListener("mouseover",surligner,true);
+}
+
+function surligner(e){
+    e.currentTarget.style.backgroundColor = "yellow";
+}
+
+function pasSurligner(e){
+    e.currentTarget.style.backgroundColor = "white";
 }
