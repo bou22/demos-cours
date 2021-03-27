@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--
+Formulaire de création d'un compte d'hébergement.
+Exercice réalisé dans le cadre d'un cours sur la validation d'un formulaire.
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Validation d'un formulaire</title>
+        <link rel="stylesheet" href="./css/exCpanel.css" />
+    </head>
+    <body>
+        <h1><img src="./images/create_a_new_account.png">Créer un nouveau compte</h1>
+        <form action="self">
+        <fieldset>
+            <h2>Informations sur le domaine</h2>
+            <label for="domaine">Domaine</label>
+            <input type="text" name="domaine" onchange="facadeValidation(this)" required>
+            <hr>
+            <label for="utilisateur">Nom d'utilisateur</label>
+            <input type="text" name="utilisateur" required>
+            <hr>
+            <label for="mdp1">Mot de passe</label>
+            <input type="password" name="mdp1" onchange="facadeValidation(this)" required>
+            <hr>            
+            <label for="mdp2">Resaisir le mot de passe</label>
+            <input type="password" name="mdp2" onchange="facadeValidation(this)" required>
+            <hr>             
+            <label for="niveau">Niveau de sécurité</label>
+            <input type="text" name="niveau" readonly>
+            <hr>            
+            <label for="couriel">Courriel</label>
+            <input type="email" name="couriel" required>
+        </fieldset>
+        <fieldset>
+            <h2>Package</h2>
+            <label for="package">Choisir un package</label>
+            <select>
+                <option value="0">---</option>
+                <option value="1">Packboy</option>
+            </select>
+        </fieldset>
+        <fieldset>
+            <h2>Paramètres</h2>
+            <label for="cgi">Accès CGI</label>
+            <input type="checkbox" name="cgi" checked>
+            <hr>
+            <label for="package">Paramètres régionaux</label>
+            <select name="package">
+                <option value="0">---</option>
+                <option value="1">Français</option>
+                <option value="2">Anglais</option>
+                <option value="3">Allemand</option>
+            </select>
+            <hr>
+            <label for="spam">Activer Apache SpamAssassin</label>
+            <input type="checkbox" name="spam" checked>
+            <hr>
+            <label for="spambox">Activer Spam Box</label>
+            <input type="checkbox" name="spambox" checked>
+        </fieldset>        
+        <fieldset>
+            <h2>Paramètres de routage des emails</h2>
+            <input type="radio" name="routage" value="0"><span>Détecter automatiquement</span>
+            <hr>
+            <input type="radio" name="routage" value="1"><span>Serveur de messagerie de secours</span>
+            <hr>            
+            <input type="radio" name="routage" value="2"><span>Serveur de messagerie local</span>
+            <hr>            
+            <input type="radio" name="routage" value="3"><span>Serveur de messagerie distant</span>           
+        </fieldset>
+        <fieldset>
+            <h2>Paramètres</h2>
+            <input type="checkbox" name="dns" value="0"><span>Activer DKIM sur ce compte</span>
+            <hr>
+            <input type="checkbox" name="dns" value="1"><span>Activer SPF sur ce compte</span>
+            <hr>            
+            <input type="checkbox" name="dns" value="2"><span>Utiliser les erveurs de noms spécifiés au niveau du bureau d'enregistrement de domaines.</span>
+            <hr>            
+            <span>Serveurs de noms: </span><span>Mise à jour...</span>           
+        </fieldset>
+            <button>Créer</button>
+        </form>
+    </body>
+    <script type="text/javascript" src="./js/exCpanel.js"></script>
+</html>

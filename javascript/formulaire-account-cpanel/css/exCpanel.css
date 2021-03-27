@@ -1,0 +1,40 @@
+/* 
+    Created on : 26 mars 2021, 15 h 10 min 09 s
+    Author     : Claude
+*/
+
+body {
+    font-family: arial;
+    font-size: 1em;
+    color: #333;
+}
+
+fieldset {
+    width: 40%;
+    padding: 20px;
+    border-color: #7fcdb8;
+    border-width: 5px;
+    margin: 25px;
+}
+
+fieldset label {
+    display: inline-block;
+    width: 100px;
+    padding-right: 25px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+fieldset span {
+    margin-left: 30px;
+}
+
+form button {
+    margin: 25px;
+    background-color: grey;
+    color: #ddd;
+    font-size: 1.2em;
+    padding-left: 15px;
+    padding-right: 15px;
+}
