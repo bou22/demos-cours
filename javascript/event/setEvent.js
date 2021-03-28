@@ -3,23 +3,41 @@
  */
 
 function setEvent(){
-    let h = document.getElementById("h1");
-    h.addEventListener("mouseover",
-        function(e){
-            console.log(e);
-            e.currentTarget.style.backgroundColor = "yellow";
-            e.currentTarget.setAttribute("name","allo");
-        },
+
+    let titre = document.getElementById("h1");
+    
+    titre.addEventListener(
+        "mouseover", //https://developer.mozilla.org/en-US/docs/Web/API/Element#focus_events
+        surligner,
         true
     )
-    h.addEventListener("mouseout",
-    function(e){
-        e.currentTarget.style.backgroundColor = "white";
-    },
+    titre.addEventListener(
+        "mouseout", //https://developer.mozilla.org/en-US/docs/Web/API/Element#focus_events
+        pasSurligner,
         true
     )
 }
 
+
 function alerter(){
-    alert("Uo");
+    alert("Attention !");
+}
+
+
+
+
+
+function enleverEvent(){
+
+    let titre = document.getElementById("h1");
+
+    titre.removeEventListener("mouseover",surligner,true);
+}
+
+function surligner(e){
+    e.currentTarget.style.backgroundColor = "yellow";
+}
+
+function pasSurligner(e){
+    e.currentTarget.style.backgroundColor = "white";
 }

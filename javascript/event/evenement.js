@@ -1,5 +1,5 @@
 /* 
- * To
+ * Démos de l'utilisation de la gestion dynamique des événements de la GUI.
  */
 
 function texteInterieur(unElement){
