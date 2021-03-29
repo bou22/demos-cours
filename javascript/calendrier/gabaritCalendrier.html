@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<!--
+Exemple en JavaScript: mise en oeuvre d'un calendrier dynamique.
+-->
+<html>
+    <head>
+        <title>Calendrier en JavaScript</title>
+        <link rel="stylesheet" href="./css/calendrier.css" />
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+    <div id="structureAccueil" onload="genererCalendrierInitial()">
+        <ul id="calendrier">
+            <li><a id="-"><<</a> Mars 2021 <a id="+">>></a></li>
+            <li><span>D</span><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span></li>
+            <li><span>&nbsp;</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span></li>
+            <li><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span></li>
+            <li><span>13</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span></li>
+            <li><span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span></li>
+            <li><span>28</span><span>29</span><span>30</span><span>31</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span></li>
+            <input type="hidden" value="int milisecondes">
+        </ul>
+    </div>
+    </body>
+</html>
