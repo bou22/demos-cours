@@ -2,7 +2,7 @@
  * Ici sont toutes les validations dans le formulaire
  */
 
-const modeDebug = true; //Pour afficher if(modeDebug)console.log
+const modeDebug = false; //Pour afficher if(modeDebug)console.log
 
 function facadeValidation(element){
     let nomDuChamp = element.name;
@@ -101,13 +101,9 @@ function validerMdpEgaux(mdp2){
  */
 function afficherAlerte(element){
     element.setAttribute("id","focus");//Le id est temporaire pendant le traitement.
-<<<<<<< HEAD
     
     let champValidé = document.getElementById(element.id);
                     if(modeDebug)console.log(champValidé);
-=======
-                                        //et permet de repérer l'élément.
->>>>>>> 9e9b1263aa10f922d51c5ac07d9e2461ddf12a9c
     
     //Petite précaution, effacer l'alerte existante si elle y est déjà.
     if (document.getElementById("poureffacer") !== null){
@@ -124,17 +120,10 @@ function afficherAlerte(element){
     alerte.appendChild(exclamation);
     
     //Insertion sur la droite du champ validé.
-<<<<<<< HEAD
     champValidé.parentNode.insertBefore(alerte,champValidé.nextSibling);
     
     //Le id temporaire est retiré.
     champValidé.removeAttribute("id");
-=======
-    //champValidé.parentNode.insertBefore(alerte,champValidé.nextSibling);
-    element.parentNode.insertBefore(alerte,element.nextSibling);
-    //Le id temporaire est retiré.
-    element.removeAttribute("id");
->>>>>>> 9e9b1263aa10f922d51c5ac07d9e2461ddf12a9c
 }
 
 /*
