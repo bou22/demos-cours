@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Démonstration sur les événements</title>
+    </head>
+    <body>
+    <form action="#">
+        <input type="text" name="nom" id="nom">
+        <input type="text" name="prenom" id="prenom">
+        <input type="text" name="numero" id="numero">
+        <input type="button" value="Utiliser l'info" onclick="modifier(nom,prenom,numero)">
+        <input type="button" value="Recevoir l'info" onclick="consulter()">
+    </form>
+    <hr>
+    <div id="affichage"></div>
+    </body>
+    <script src="reseau.js"></script>
+    <script src="json-js.js"></script>
+</html>
