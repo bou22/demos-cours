@@ -1,0 +1,29 @@
+
+body{
+    font-family: arial;
+    color: #333;
+}
+
+ul {
+    background-color: #888;
+    width: 364px;
+    padding: 0px;
+}
+
+ul li {
+    list-style: none;
+    text-align: center;
+}
+
+ul li span {
+    display: inline-block;
+    width: 50px;
+    text-align: center;
+    background-color: #ddd;
+    margin: 1px;
+}
+
+ul li a {
+    display: inline-block;
+    width: 100px;
+}
