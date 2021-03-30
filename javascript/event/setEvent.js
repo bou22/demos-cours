@@ -8,7 +8,7 @@ function setEvent(){
     
     titre.addEventListener(
         "mouseover", //https://developer.mozilla.org/en-US/docs/Web/API/Element#focus_events
-        surligner,
+        function(e){alert("Fonction anonyme");},
         true
     )
     titre.addEventListener(
