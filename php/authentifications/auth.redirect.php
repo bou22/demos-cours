@@ -3,11 +3,13 @@
 if (!isset($_POST['nom'],$_POST['mdp'])){
     //Le formulaire ne contient pas ces champs.
     //Ceci peut arriver en cas d'attaque.
-    echo "refus de traitement";
+    //Une info d'entête de réponse est envoyée: elle indique 
+    //au navigateur de faire une redirection sur le lien fourni.
+    header("Location: index.php");
 } else if (empty($_POST['nom']) || empty($_POST['mdp'])){
     //Les champs sont obligatoires dans le formulaire.
     //Il faut valider sur le backend aussi.
-    echo "Il manque des informations";
+    header("Location: index.php");
 } else {
     //Toutes les exigences sont atteintes, on peut vérifier 
     //l'authentification.
@@ -21,8 +23,9 @@ if (!isset($_POST['nom'],$_POST['mdp'])){
 
     //Utilisation de la classe statique pour substituer une Bd.
     if (Authentification::getAuthentification($nom,$mdp)){
-        echo "C'est ok";
+        //Nom et mdp ok
+        header("Location: zoneauthok.php");
     } else {
-        echo "Interdit";
+        header("Location: index.php");
     }
 }
