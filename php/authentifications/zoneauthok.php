@@ -8,7 +8,8 @@
     <?php 
         /**
          * Cette page n'est pas protégée des accès sans authentification.
-         * La prochaine étape inclue une gestion de la session.
+         * La prochaine étape sera de mettre en place une 
+         * gestion de la session d'utilisation.
          */
     ?>
         <p>La zone est accessible seulement une fois authentifié.</p>
