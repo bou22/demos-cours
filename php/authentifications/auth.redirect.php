@@ -32,10 +32,8 @@ if (!isset($_POST['nom'],$_POST['mdp'])){
          * L'authentification est acceptée.
          */
         //echo "C'est ok";
-        //require_once 'auth.session.php';
-        session_name("auth");
-        session_start();
-        $_SESSION['infoAuth'] = $nom;
+        require_once 'auth.session.php';
+        setSession($nom);
         header("Location: authentificationOK.php");
     } else {
         /**

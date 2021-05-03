@@ -2,20 +2,24 @@
 
 
 function setSession($info) {
-    session_name("auth");
-    session_start();
+    setSessionOn();
     $_SESSION['infoAuth'] = $info;
 }
 
 function getSessionExiste(){
     $sessionEstValide=false;
     
-    session_name("auth");
-    session_start();
+    setSessionOn();
     
     if (isset($_SESSION['infoAuth']) && !empty($_SESSION['infoAuth'])){
         $sessionEstValide = true;
     } 
     
     return $sessionEstValide;
+}
+
+function setSessionOn() {
+    
+    session_name("auth");
+    return session_start();
 }

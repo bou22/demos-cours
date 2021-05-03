@@ -5,11 +5,8 @@
  */
 
 require_once 'auth.session.php';
-
-    session_name("auth");
-    session_start();
     
-    if (isset($_SESSION['infoAuth'])){
+    if (getSessionExiste()){
         $nom = $_SESSION['infoAuth'];
 
     } else {
