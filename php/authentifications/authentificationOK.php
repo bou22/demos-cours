@@ -13,6 +13,7 @@ require_once 'auth.session.php';
         $nom = $_SESSION['infoAuth'];
 
     } else {
+        setcookie("erreurAuth", "Vous devez vous authentifier", 0, "/", "claude.techinfo420.ca", true, true);
         header("Location: index.php");      
     }
 

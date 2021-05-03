@@ -41,7 +41,7 @@ if (!isset($_POST['nom'],$_POST['mdp'])){
         /**
          * L'authentification est refusée.
          */
-        
+        setcookie("erreurAuth", "Votre identifiant n'est pas valide", 0, "/", "claude.techinfo420.ca", true, true);
         header("Location: index.php");
         //echo "Interdit";
     }
