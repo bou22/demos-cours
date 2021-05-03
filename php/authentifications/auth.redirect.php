@@ -3,11 +3,18 @@
 if (!isset($_POST['nom'],$_POST['mdp'])){
     //Le formulaire ne contient pas ces champs.
     //Ceci peut arriver en cas d'attaque.
-    echo "refus de traitement";
+
+    setcookie("erreurAuth", "Refus de traitement.", 0, "/", "claude.techinfo420.ca", true, true);
+    header("Location: index.php");
+    //echo "refus de traitement";
+    
 } else if (empty($_POST['nom']) || empty($_POST['mdp'])){
     //Les champs sont obligatoires dans le formulaire.
     //Il faut valider sur le backend aussi.
-    echo "Il manque des informations";
+    setcookie("erreurAuth", "Il manque des informations pour l'authentification", 0, "/", "claude.techinfo420.ca", true, true);
+    header("Location: index.php");
+    //echo "Il manque des informations";
+    
 } else {
     //Toutes les exigences sont atteintes, on peut vérifier 
     //l'authentification.
@@ -25,14 +32,17 @@ if (!isset($_POST['nom'],$_POST['mdp'])){
          * L'authentification est acceptée.
          */
         //echo "C'est ok";
-        require_once 'auth.session.php';
-        setSession($nom);
+        //require_once 'auth.session.php';
+        session_name("auth");
+        session_start();
+        $_SESSION['infoAuth'] = $nom;
         header("Location: authentificationOK.php");
     } else {
         /**
          * L'authentification est refusée.
          */
-        //echo "Interdit";
+        
         header("Location: index.php");
+        //echo "Interdit";
     }
 }

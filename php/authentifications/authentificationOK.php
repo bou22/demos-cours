@@ -6,9 +6,15 @@
 
 require_once 'auth.session.php';
 
-if (!getSessionExiste()){
-    header("Location: index.php");
-}
+    session_name("auth");
+    session_start();
+    
+    if (isset($_SESSION['infoAuth'])){
+        $nom = $_SESSION['infoAuth'];
+
+    } else {
+        header("Location: index.php");      
+    }
 
 ?>
 <!DOCTYPE html>
@@ -19,7 +25,7 @@ if (!getSessionExiste()){
     </head>
     <body>
         <?php
-        echo "Ici c'est la zone protégée.";
+        echo "Ici c'est la zone protégée pour ".$nom;
         ?>
     </body>
 </html>
