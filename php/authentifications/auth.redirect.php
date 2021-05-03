@@ -21,8 +21,18 @@ if (!isset($_POST['nom'],$_POST['mdp'])){
 
     //Utilisation de la classe statique pour substituer une Bd.
     if (Authentification::getAuthentification($nom,$mdp)){
-        echo "C'est ok";
+        /**
+         * L'authentification est acceptée.
+         */
+        //echo "C'est ok";
+        require_once 'auth.session.php';
+        setSession($nom);
+        header("Location: authentificationOK.php");
     } else {
-        echo "Interdit";
+        /**
+         * L'authentification est refusée.
+         */
+        //echo "Interdit";
+        header("Location: index.php");
     }
 }

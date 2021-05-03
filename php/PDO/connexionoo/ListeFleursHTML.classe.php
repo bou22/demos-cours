@@ -6,7 +6,6 @@ require_once './ConnexionDemo.classe.php';
  * Classe de récupération de la connexion sur une base de données.
  * @author Claude
  */
-
 class ListeFleursHTML extends ListeFleurs {
 
     public function __construct()
