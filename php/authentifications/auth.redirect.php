@@ -19,15 +19,15 @@ if (!isset($_POST['nom'],$_POST['mdp'])){
     //Toutes les exigences sont atteintes, on peut vérifier 
     //l'authentification.
 
-    require_once './Authentification.static.php';
+    require_once './Authentifier.static.php';
 
     //Les valeurs provenant de l'extérieur du serveur doivent
     //être considérées dangereuses et être alors soit filtrées ou validées.
     $nom = filter_input(INPUT_POST,'nom',FILTER_SANITIZE_SPECIAL_CHARS);
     $mdp = filter_input(INPUT_POST,'mdp',FILTER_DEFAULT);
 
-    //Utilisation de la classe statique pour substituer une Bd.
-    if (Authentification::getAuthentification($nom,$mdp)){
+    //Utilisation de la classe statique.
+    if (Authentifier::getAuthentification($nom,$mdp)){
         /**
          * L'authentification est acceptée.
          */
