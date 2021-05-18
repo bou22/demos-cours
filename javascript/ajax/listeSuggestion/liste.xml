@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<expressions>
+	<expression>
+		<mot langue="anglais">Cow Boy:</mot>
+		<definition>Responsable d'un toupeau de vaches.</definition>
+	</expression>
+	<expression>
+		<mot langue="francais">Cheval:</mot>
+		<definition>Animal de compagnie pouvant être monté.</definition>
+	</expression>
+	<expression>
+		<mot langue="francais">Chien:</mot>
+		<definition>Animal de compagnie de petite taille.</definition>
+	</expression>
+	<expression>
+		<mot langue="francais">Étudiant:</mot>
+		<definition>Animal de service au travail.</definition>
+	</expression>
+	<expression>
+		<mot langue="francais">Prof:</mot>
+		<definition>Bête de somme souvent mal traitée.</definition>
+	</expression>
+	<expression>
+		<mot langue="francais">Ordinateur:</mot>
+		<definition>Outil pour travailler seulement</definition>
+	</expression>
+	<expression>
+		<mot langue="francais">Auto:</mot>
+		<definition>Outil à quatre roues.</definition>
+	</expression>
+	<expression>
+		<mot langue="francais">Mongolfière:</mot>
+		<definition>Transport pour courageux.</definition>
+	</expression>
+	<expression>
+		<mot langue="francais">Stylo:</mot>
+		<definition>Pour écrire avec le bout pointu.</definition>
+	</expression>
+	<expression>
+		<mot langue="francais">Neige:</mot>
+		<definition>Doit commencer un jour ou l'autre.</definition>
+	</expression>
+	<expression>
+		<mot langue="francais">Travail:</mot>
+		<definition>Peut aussi être réalisé hors cours.</definition>
+	</expression>
+	<expression>
+		<mot langue="francais">Tracteur:</mot>
+		<definition>Jouet pour grand garçon.</definition>
+	</expression>
+</expressions>

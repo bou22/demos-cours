@@ -1,6 +1,5 @@
 <?php
 
-
 function setSession($info) {
     setSessionOn();
     $_SESSION['infoAuth'] = $info;
