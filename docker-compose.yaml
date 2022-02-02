@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+    php-apache-environment:
+        container_name: php-apache
+        build:
+            context: ./
+            dockerfile: Dockerfile
+        depends_on:
+            - db
+        volumes:
+            - ./site/:/var/www/html/
+        ports:
+            - 8000:80
+    db:
+        container_name: db
+        image: mariadb
+        restart: always
+        environment:
+            MYSQL_DATABASE: idkey
+            MYSQL_ROOT_PASSWORD: dbpass
+            MYSQL_USER: php
+            MYSQL_PASSWORD: pwdPhp?
+        volumes:
+            - ./volume-data/:/var/lib/mysql/
+    adminer:
+        container_name: adminer
+        image: adminer
+        restart: always
+        ports:
+            - 8080:8080
