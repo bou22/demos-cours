@@ -16,10 +16,10 @@ services:
     #     image: mariadb
     #     restart: always
     #     environment:
-    #         MYSQL_DATABASE: idkey
-    #         MYSQL_ROOT_PASSWORD: dbpass
-    #         MYSQL_USER: php
-    #         MYSQL_PASSWORD: pwdPhp?
+    #         MYSQL_DATABASE: 
+    #         MYSQL_ROOT_PASSWORD: 
+    #         MYSQL_USER: 
+    #         MYSQL_PASSWORD: 
     #     volumes:
     #         - ./volume-data/:/var/lib/mysql/
     # adminer:
