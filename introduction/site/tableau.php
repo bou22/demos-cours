@@ -1,5 +1,5 @@
 <?php
-set_time_limit(0);
+    set_time_limit(0);
 ?>
 <html>
     <head>
@@ -10,7 +10,7 @@ set_time_limit(0);
             width: 50%;
             border-collapse: collapse;
         }
-        table tr td {
+        td {
             border: 1px solid black;
             background-color: #ddd;
         }

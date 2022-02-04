@@ -1,1 +1,1 @@
-Solution de l'exercice du 3 février 2021.
+Solution d'un exercice du cours Prog Web.
