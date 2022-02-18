@@ -4,15 +4,16 @@
         <link href="main.css" rel="stylesheet">
         <script src="listes.js"></script>
         <script src="dom.js"></script>
+        <script src="recherche.js"></script>
         <title>Ventes de garage point com</title>
     </head>
     <body>
         <h1 id="enTete">Dans une vente de garage près de chez-vous</h1>
         <div id="barre">
             <form method="get" action="rechercher-lieux.php">
-                <input type="search" id="recherche" name="recherche" size="40" placeholder="Rechercher un destination vente de garage">
-                <input type="submit" class="floatRight" value="&#x1F50D;">
-        </form>
+                <input type="input" id="recherche" name="recherche" size="40" placeholder="Inscrire votre mot clé ici">
+                <input onclick="rechercherLeMot(recherche.value)" type="button" class="floatRight" value="&#x1F50D;">
+            </form>
         </div>
         <div id="menu">
             <ul>
