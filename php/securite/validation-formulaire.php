@@ -55,7 +55,9 @@
         <h1>Protection de l'application par la validation des requêtes du client</h1>
         <form method="get" action="./logique/include.securite.php" name="formDonnees" id="formDonnees">
             <label for="entier">Un nombre entier</label>
-                <input type="text" name="entier" id="entier">
+                <input type="text" name="entier" id="entier"
+                <?php if (isset($_SESSION["entier"])) echo "value=".$_SESSION["entier"]; ?>
+                >
             
                 <?php
                     if (isset($erreursRecues["entier"]) && $erreursRecues["entier"]===0) {
@@ -63,14 +65,18 @@
                     }
                 ?>
             <label for="float">Un nombre float</label>
-                <input type="text" name="float" id="float">
+                <input type="text" name="float" id="float"
+                <?php if (isset($_SESSION["float"])) echo "value=".$_SESSION["float"]; ?>
+                >
             
             <?php
                     if (isset($erreursRecues["float"]) && $erreursRecues["float"]===0) echo "<span>Utiliser un nombre à point flottant avec un '.'.</span>";
              ?>
 
             <label for="courriel">Un courriel</label>
-                <input type="text" name="courriel" id="courriel">
+                <input type="text" name="courriel" id="courriel"
+                <?php if (isset($_SESSION["courriel"])) echo "value=".$_SESSION["courriel"]; ?>
+                >
             
             <?php
                     if (isset($erreursRecues["courriel"]) && $erreursRecues["courriel"]===0) echo "<span>Utiliser un adresse courriel en format valide.</span>";
@@ -86,7 +92,9 @@
                     } 
                 ?>
             <label for="user">Un nom d'utilisateur</label>
-                <input type="text" name="user" id="user">
+                <input type="text" name="user" id="user"
+                <?php if (isset($_SESSION["user"])) echo "value=".$_SESSION["user"]; ?>
+                >
             
             <?php
                     if ( (isset($erreursRecues["user"]) && $erreursRecues["user"]===0) || (isset($erreursRecues["mdp"]) && $erreursRecues["mdp"]===0) ) 
