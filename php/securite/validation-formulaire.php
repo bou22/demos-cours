@@ -92,9 +92,7 @@
                     } 
                 ?>
             <label for="user">Un nom d'utilisateur</label>
-                <input type="text" name="user" id="user"
-                <?php if (isset($_SESSION["user"])) echo "value=".$_SESSION["user"]; ?>
-                >
+                <input type="text" name="user" id="user">
             
             <?php
                     if ( (isset($erreursRecues["user"]) && $erreursRecues["user"]===0) || (isset($erreursRecues["mdp"]) && $erreursRecues["mdp"]===0) ) 
