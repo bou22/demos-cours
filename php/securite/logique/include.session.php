@@ -71,7 +71,7 @@
             session_destroy();
             $_SESSION = array();
             session_commit();
-            session_gc(); //Enclencher le garbage collector lors de la fin complète; Gobe ressource.
+            error_log("Nb objet effaces: ".session_gc()); //Enclencher le garbage collector lors de la fin complète; Gobe ressource.
 
             return false; //La session n'est plus valide
         }

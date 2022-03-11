@@ -35,8 +35,9 @@
         span {
             font-size: 0.8em;
             color: #000;
-            background-color: yellowgreen;
+            background-color: yellow;
             display: block;
+            width: fit-content;
         }
     </style>
         <title>Sécurité des sessions</title>

@@ -3,7 +3,7 @@
 
     //Automatiser la lecture sera efficace.
     $erreursRecues = array();
-    error_log("COOKIE: ".isset($_COOKIE));
+
     if (isset($_COOKIE)){
         foreach ($_COOKIE as $key => $value) {
             //La valeur du cookie est déterminé; aucune autre valeur que 0 est acceptable.
