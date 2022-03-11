@@ -1,3 +1,13 @@
+<?php
+    include_once '../include.config.php';
+    include_once RACINE.'/logique/include.session.php';
+
+    if (!authentificationValide()){
+        // L'authentification n'existe pas.
+        header("Location: ../authentification.php");
+    }
+?>
+
 <html>
     <head>
     <meta charset="utf-8">
@@ -27,7 +37,7 @@
             padding: 2px 2px 2px 10px;
         }
     </style>
-        <title>Programmation serveur avec PHP</title>
+        <title>Contenu confidentiel</title>
     </head>
     <body>
         <h1>Cette page doit être bien protégée</h1>

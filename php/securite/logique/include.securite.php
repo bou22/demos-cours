@@ -39,7 +39,7 @@ if (filter_input(INPUT_GET, "courriel", FILTER_VALIDATE_EMAIL)){
 if (filter_input(INPUT_GET, "url", FILTER_VALIDATE_URL)){
     $_SESSION['url'] = filter_input(INPUT_GET, "url",FILTER_SANITIZE_URL);
 } else {
-    $_SESSION['url'] = filter_input(INPUT_GET, "entier",FILTER_SANITIZE_SPECIAL_CHARS);
+    $_SESSION['url'] = filter_input(INPUT_GET, "url",FILTER_SANITIZE_SPECIAL_CHARS);
     setcookie('url',"0", time()+30,"/");
     $donneesRequeteOk = false;
 }
