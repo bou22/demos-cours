@@ -62,7 +62,7 @@
         let champsTextes =Array.from(document.getElementsByTagName('input'));
 
         champsTextes.forEach(function(champ) {
-            champ.setAttribute("size","40");
+            champ.setAttribute("size","50");
         });
     </script>
 </html>
