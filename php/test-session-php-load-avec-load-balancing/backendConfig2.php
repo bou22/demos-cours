@@ -1,0 +1,2 @@
+<?php
+$INSTANCE = 2;
