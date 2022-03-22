@@ -28,6 +28,6 @@ switch ($donneesRequeteOk) {
         break;
     
     default:
-    header("Location: ../authentification.php"); //vers une nouvelle essaie
+    header("Location: ../index.php"); //vers une nouvelle essaie
         break;
 }

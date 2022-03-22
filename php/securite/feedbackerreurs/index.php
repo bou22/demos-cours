@@ -41,7 +41,7 @@
     </head>
     <body>
         <h1>Protection de l'application par la validation des requêtes du client</h1>
-        <form method="get" action="./logique/include.securite.php" name="formDonnees" id="formDonnees">
+        <form method="get" action="./logique/include.validation.php" name="formDonnees" id="formDonnees">
             <label for="entier">Un nombre entier</label>
                 <input type="text" name="entier" id="entier"
                 <?php if (isset($_SESSION["entier"])) echo "value=".$_SESSION["entier"]; ?>

@@ -34,7 +34,7 @@
     </head>
     <body>
         <h1>Protection de l'application par la validation des requêtes du client</h1>
-        <form method="get" action="./logique/redirect.securite.php" name="formDonnees" id="formDonnees">
+        <form method="get" action="./logique/redirect.validation.php" name="formDonnees" id="formDonnees">
             <label for="entier">Un nombre entier
                 <input type="text" name="entier" id="entier">
             </label>

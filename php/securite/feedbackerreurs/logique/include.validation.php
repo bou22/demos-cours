@@ -66,6 +66,6 @@ switch ($donneesRequeteOk) {
         break;
     
     default:
-    header("Location: ../validation-formulaire.php"); //Problème recommencer
+    header("Location: ../index.php"); //Problème recommencer
         break;
 }
