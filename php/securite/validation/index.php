@@ -59,6 +59,7 @@
         </form>
     </body>
     <script type="text/javascript">
+        
         let champsTextes =Array.from(document.getElementsByTagName('input'));
 
         champsTextes.forEach(function(champ) {
