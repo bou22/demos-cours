@@ -1,7 +1,7 @@
 <?php
     include_once 'include.config.php';
     include_once RACINE.'/logique/include.erreurForm.php';
-    session_start();
+
 ?>
 
 <html>

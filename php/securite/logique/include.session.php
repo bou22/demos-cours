@@ -9,7 +9,9 @@
  * Voir la documentation : https://www.php.net/manual/fr/session.security.ini.php
  */
 
-        ini_set("session.cookie_lifetime", 20); // Durée de la session en secondes
+ define("DUREE_SESSION",20);//Utilisée pour le cookie et timestamp.
+ 
+        ini_set("session.cookie_lifetime", DUREE_SESSION); // Durée de la session en secondes
         ini_set("session.use_cookies", 1);
         ini_set("session.use_only_cookies" , 1);
         ini_set("session.use_strict_mode", 1);
@@ -30,7 +32,7 @@
          * n'est pas souhaitable parce que la requête sera rallentie.
          * https://www.php.net/manual/fr/function.session-gc.php
          */
-        ini_set("session.gc_maxlifetime", 30);
+        ini_set("session.gc_maxlifetime", DUREE_SESSION);
         ini_set("session.gc_probability",90);
         ini_set("session.gc_divisor",100);
 
@@ -42,55 +44,39 @@
          * #2: session terminé
          */
     function authentificationValide(){
+
         session_start();
+
         if (!empty($_SESSION['valide']) && $_SESSION['valide'] == "valide") {
             /** Une authentification existe */
 
-            if (!empty($_SESSION['expiration']) && $_SESSION['expiration'] < time() - 10) {
-                /** Renouvellement de la session complète après 30 sec d'inactivité */
-                error_log("Session1 status: ".session_status());
-                session_destroy();
-                session_commit();
-                session_start();
-                $_SESSION['expiration']=time();
-                $_SESSION['valide'] = "valide";
-            } else {
-                /** Moins de 30 sec d'inactivité, renouvellement du timestamp et du jeton valide.
-                 * Sinon ce dernier pourrait passer dans le Garbage Collector.
-                 */
-                error_log("Session2 status: ".session_status());
-                $_SESSION['expiration']=time();
-                $_SESSION['valide'] = "valide";
-            }
+            session_regenerate_id(false); //Le jeton est regénéré
+            
+            $_SESSION['expiration']=time();
+            $_SESSION['valide'] = "valide";
 
             return true; //La session est encore valide
 
         } else {
             /** L'authentification n'est plus valide */
-            error_log("Session3 status: ".session_status());
-            session_destroy();
-            $_SESSION = array();
-            session_commit();
-            error_log("Nb objet effaces: ".session_gc()); //Enclencher le garbage collector lors de la fin complète; Gobe ressource.
-
+            
+            supprimerSession();
+            
             return false; //La session n'est plus valide
         }
     }
 
     function creerAuthentification(){
-        error_log("Creation de session: Session3 status: ".session_status());
-        session_start();
-        session_destroy(); // Toutes sessions existantes est détruite
-        session_commit();
+        supprimerSession();//Pour éviter toutes possibilités de récupération de session
         session_start();
         $_SESSION['expiration']=time();
         $_SESSION['valide'] = "valide";
     }
 
     function supprimerSession() {
-        error_log("Supprimer Session4 status: ".session_status());
+        session_start();
+        session_gc(); //Enclencher le garbage collector lors de la fin complète.
         session_destroy();
         $_SESSION = array();
         session_commit();
-        session_gc(); //Enclencher le garbage collector lors de la fin complète.
     }
