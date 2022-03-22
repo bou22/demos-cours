@@ -3,6 +3,7 @@ import express from 'express'
 const DataController = express.Router();
 
 DataController.post("/data", (req, res) => {
+	console.log("data for user :", req.user.id.toString())
 	if (req.user.rank === 'admin') {
 		res.json([
 			{

@@ -1,5 +1,12 @@
 # JWT example
 
+Create docker and run it:
+```bash
+docker build . -t <your username>/node-web-app
+
+docker run -p 9000:9000 -d <your username>/node-web-app
+```
+
 Get a JWT as admin:
 ```bash
 curl -X POST -H "Content-Type: application/json" -d "{\"username\": \"admin\", \"password\": \"admin\"}" localhost:9000/login
