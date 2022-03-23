@@ -2,7 +2,7 @@
 
 if (!isset($_POST['nom'],$_POST['mdp'])){
     //Le formulaire ne contient pas ces champs.
-    //Ceci peut arriver en cas d'attaque.
+    //Ceci peut arriver si la requête est réalisée avec une autre méthode que post.
 
     setcookie("erreurAuth", "Refus de traitement.", 0, "/", "claude.techinfo420.ca", true, true);
     header("Location: index.php");
@@ -24,7 +24,7 @@ if (!isset($_POST['nom'],$_POST['mdp'])){
     //Les valeurs provenant de l'extérieur du serveur doivent
     //être considérées dangereuses et être alors soit filtrées ou validées.
     $nom = filter_input(INPUT_POST,'nom',FILTER_SANITIZE_SPECIAL_CHARS);
-    $mdp = filter_input(INPUT_POST,'mdp',FILTER_DEFAULT);
+    $mdp = filter_input(INPUT_POST,'mdp',FILTER_SANITIZE_SPECIAL_CHARS);
 
     //Utilisation de la classe statique.
     if (Authentifier::getAuthentification($nom,$mdp)){
@@ -39,7 +39,7 @@ if (!isset($_POST['nom'],$_POST['mdp'])){
         /**
          * L'authentification est refusée.
          */
-        setcookie("erreurAuth", "Votre identifiant n'est pas valide", 0, "/", "claude.techinfo420.ca", true, true);
+        setcookie("erreurAuth", "Votre identifiant n'est pas valide", 0, "/", "domaine.com", true, true);
         header("Location: index.php");
         //echo "Interdit";
     }
