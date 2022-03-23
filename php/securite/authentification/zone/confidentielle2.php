@@ -4,7 +4,7 @@
 
     if (!authentificationValide()){
         // L'authentification n'existe pas.
-        header("Location: ../authentification.php");
+        header("Location: ../index.php");
     }
 ?>
 
