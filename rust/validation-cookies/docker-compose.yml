@@ -1,0 +1,28 @@
+services:
+  backend:
+    container_name: backend
+    hostname: backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "4000:4000"
+    networks:
+      - backend-network
+  pkgui-nginx:
+    container_name: backend-nginx
+    hostname: backendnginx
+    image: nginx:1.21
+    restart: always
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./frontend/public/:/var/www/dist/
+    ports:
+      - "${PORT}:80"
+    networks:
+      - backend-network
+
+networks:
+  backend-network:
+    driver: bridge

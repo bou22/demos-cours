@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Test</title>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+	</head>
+	<body>
+		<form id="form">
+			<label for="entier">entier:</label>
+			<input type="number" id="entier" name="entier" />
+			<p id="entier-msg"></p>
+			<br />
+			<label for="float">float:</label>
+			<input type="text" id="float" name="float" />
+			<p id="float-msg"></p>
+			<br />
+			<label for="couriel">couriel:</label>
+			<input type="email" id="couriel" name="couriel" />
+			<p id="couriel-msg"></p>
+			<br />
+			<label for="url">url:</label>
+			<input type="url" id="url" name="url" />
+			<p id="url-msg"></p>
+			<br />
+			<label for="utilisateur">utilisateur:</label>
+			<input type="text" id="utilisateur" name="utilisateur" />
+			<p id="utilisateur-msg"></p>
+			<br />
+			<label for="motpasse">motpasse:</label>
+			<input type="password" id="motpasse" name="motpasse" />
+			<p id="motpasse-msg"></p>
+			<br />
+			<button type="submit">submit</button>
+		</form>
+		<div id="popup" style="display: none;">
+			<span>entier:</span>
+			<span id="entier-res"></span>
+			<br />
+			<span>float:</span>
+			<span id="float-res"></span>
+			<br />
+			<span>couriel:</span>
+			<span id="couriel-res"></span>
+			<br />
+			<span>url:</span>
+			<span id="url-res"></span>
+			<br />
+			<span>utilisateur:</span>
+			<span id="utilisateur-res"></span>
+			<br />
+			<span>motpasse:</span>
+			<span id="motpasse-res"></span>
+			<br />
+			<button id="closePopup" onclick="closePopup()">close</button>
+		</div>
+	</body>
+	<script>
+		const submitData = async (e) => {
+			e.preventDefault();
+			closePopup()
+			let obj = {};
+			let data = new FormData(form);
+
+			for (const [name, value] of data) {
+				obj[name] = String(value);
+			}
+
+			const response = await fetch("/api/validate", {
+				method: "POST",
+				cache: "no-cache",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(obj),
+			});
+
+			data = await response.json();
+
+			let asErr = false;
+			for(const k in data) {
+				let p = document.getElementById(`${k}-msg`);
+				p.innerText = "";
+				const item = data[k];
+
+				if(item.err){
+					asErr = true;
+					p.innerText = item.msg;
+				}
+			}
+
+			if(!asErr) {
+				const d = document.getElementById("popup");
+				d.style.display = "block";
+
+				for (const k in obj) {
+					let p = document.getElementById(`${k}-res`);
+					p.innerText = obj[k];
+				}
+			}
+		};
+
+		const closePopup = () => {
+			const d = document.getElementById("popup");
+			d.style.display = "none";
+		}
+
+		document.getElementById("form").addEventListener("submit", submitData);
+	</script>
+</html>
