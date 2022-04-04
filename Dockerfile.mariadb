@@ -1,3 +1,5 @@
 FROM mariadb:latest
+COPY ./db/420-149.sql /docker-entrypoint-initdb.d/
 COPY ./db/BdPrintemps.sql /docker-entrypoint-initdb.d/
 COPY ./db/BdFleurs.sql /docker-entrypoint-initdb.d/
+

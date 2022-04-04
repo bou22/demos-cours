@@ -17,7 +17,7 @@ services:
             - MYSQL_ROOT_PASSWORD=bdpass
             - MYSQL_USER=utilisateur
             - MYSQL_PASSWORD=utilisateur
-            - MYSQL_DATABASE=printemps
+            - MYSQL_DATABASE=420-149
             - TZ=America/New_York
         volumes:
             - mariadb-volumes:/var/lib/mysql

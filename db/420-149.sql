@@ -1,8 +1,8 @@
 --
 -- Base de données :  
 --
-create database printemps;
-use printemps;
+-- create database 420-149;
+-- use 420-149;
 -- --------------------------------------------------------
 
 --
@@ -20,8 +20,17 @@ CREATE TABLE travaux (
   nom varchar(255) NOT NULL,
   PRIMARY KEY (id)
 );
+
+CREATE TABLE users (
+  id int(16) NOT NULL AUTO_INCREMENT,
+  nom varchar(255) NOT NULL,
+  mdp varchar(255) NOT NULL,
+  PRIMARY KEY (id)
+);
+
+
 --
--- Insertions des données de la table fleurs
+-- Insertions des données des tables
 --
 
 INSERT INTO fleurs (nom) VALUES('Tulipe');
