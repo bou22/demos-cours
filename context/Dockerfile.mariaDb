@@ -1,0 +1,2 @@
+FROM mariadb:latest
+COPY ./php/pdo/BdPrintemps.sql /docker-entrypoint-initdb.d/

@@ -3,9 +3,38 @@ services:
     php-apache-environment:
         container_name: php-apache-progweb
         build:
-            context: ./
+            context: ./context/
             dockerfile: Dockerfile
         volumes:
             - ./:/var/www/html/
         ports:
             - 8000:80
+
+    mariadb:
+        container_name: mariadb
+        image: mariadb:latest
+        environment:
+            - MYSQL_ROOT_PASSWORD=Ban@na_Sp1it
+            - MYSQL_USER=utilisateur
+            - MYSQL_PASSWORD=SW00bway!2022
+            - MYSQL_DATABASE=Infocentre
+            - TZ=America/New_York
+        volumes:
+            - mariadb-volumes:/var/lib/mysql
+        build:
+            context: ./context/
+            dockerfile: Dockerfile.mariadb
+        ports:
+            - 3306:3306
+
+    adminer:
+        container_name: adminer
+        image: adminer
+        restart: always
+        ports:
+            - 8081:8080
+        environment:
+            - TZ=America/New_York
+
+volumes:
+    mariadb-volumes: {}
