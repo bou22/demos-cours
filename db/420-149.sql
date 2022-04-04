@@ -2,7 +2,7 @@
 -- Base de données :  
 --
 -- create database 420-149;
--- use 420-149;
+use 420-149;
 -- --------------------------------------------------------
 
 --
@@ -50,4 +50,3 @@ INSERT INTO travaux (nom) VALUES('Faire le ménage du garage');
 INSERT INTO travaux (nom) VALUES('Laver les vitres des fenêtres');
 INSERT INTO travaux (nom) VALUES('Prendre une bière au soleil');
 INSERT INTO travaux (nom) VALUES('Sortir et allumer le BBQ');
-
