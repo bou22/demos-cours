@@ -1,38 +1,38 @@
 version: '3.8'
 services:
     php-apache-environment:
-        container_name: php-apache-progweb
+        container_name: php-apache-149
         build:
-            context: ./context/
+            context: ./
             dockerfile: Dockerfile
         volumes:
-            - ./:/var/www/html/
+            - ./src/:/var/www/html/
         ports:
-            - 8000:80
+            - 8888:80
 
     mariadb:
-        container_name: mariadb
+        container_name: mariadb-149
         image: mariadb:latest
         environment:
-            - MYSQL_ROOT_PASSWORD=Ban@na_Sp1it
+            - MYSQL_ROOT_PASSWORD=bdpass
             - MYSQL_USER=utilisateur
-            - MYSQL_PASSWORD=SW00bway!2022
-            - MYSQL_DATABASE=Infocentre
+            - MYSQL_PASSWORD=utilisateur
+            - MYSQL_DATABASE=printemps
             - TZ=America/New_York
         volumes:
             - mariadb-volumes:/var/lib/mysql
         build:
-            context: ./context/
+            context: ./
             dockerfile: Dockerfile.mariadb
         ports:
-            - 3306:3306
+            - 3308:3306
 
     adminer:
-        container_name: adminer
+        container_name: adminer-149
         image: adminer
         restart: always
         ports:
-            - 8081:8080
+            - 8149:8080
         environment:
             - TZ=America/New_York
 

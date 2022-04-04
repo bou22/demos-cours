@@ -1,8 +1,8 @@
 --
 -- Base de données :  
 --
-create database printemps;
-use printemps;
+create database fleurs;
+use fleurs;
 -- --------------------------------------------------------
 
 --
