@@ -54,3 +54,7 @@ abstract class Liste {
         $this->requete = $requete;
     }
 }
+
+require_once 'ListeFleurs.classe.php';
+require_once 'ListeTravaux.classe.php';
+require_once 'ListeUsers.classe.php';

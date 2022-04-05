@@ -50,12 +50,18 @@
         </style>
     </head>
     <body>
-        <h1>Utilisation de données dynamiques dans un interface graphique</h1>
+        <h1>Réalisation de fonctions transactionnelles: requêtes en écriture sur la base de données</h1>
 
         <?php
-            //namespace demoPDO; // Namespace déclaré au haut du document
+            require_once 'gui/ListeSelect.classe.php';
+            require_once 'gui/ListeTable.classe.php';
+            require_once 'gui/ListeTableFormDelete.classe.php';
+            
 
-
+            $user = new ListeTableFormDelete();
+            
+            echo $user->getElementHtml("users","name='travaux' id='travaux' class='selectFormatPetit'");
+            
        ?>
 
     </body>

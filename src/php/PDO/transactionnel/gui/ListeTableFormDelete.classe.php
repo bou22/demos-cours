@@ -10,7 +10,7 @@ require_once 'ElementHtml.abstract.php';
  * Classe de récupération de la connexion sur une base de données.
  * @author Claude
  */
-class ListeSelect {
+class ListeTableFormDelete extends ElementHtml {
 
     protected $liste;
 
@@ -21,11 +21,11 @@ class ListeSelect {
 
         $this->setListeElement($typeDonnees);
         
-        $html = "<select ".$paramHTML.">";
+        $html = "<table ".$paramHTML.">";
         foreach($this->liste->getSelectAll() as $key=>$value){
-            $html .= "<option value='".$key."'>".$value."</option>";
+            $html .= "<tr><form id='f$key' action='' method='get'><td><input type='text' name='iduser' value='$key'></td><td><input type='text' name='nomuser' value='$value'></td><td><input type='submit' value='X'></td></form></tr>";
         }
-        $html .= "</select>";
+        $html .= "</table>";
 
         return $html;
     }

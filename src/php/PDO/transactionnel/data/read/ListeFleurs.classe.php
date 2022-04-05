@@ -1,6 +1,6 @@
 <?php
 require_once 'Liste.abstract.php';
-require_once './connexion/ConnexionPDO.classe.php';
+require_once 'data/connexion/ConnexionPDO.classe.php';
 
 /**
  * Classe de récupération de la connexion sur une base de données.
@@ -14,7 +14,7 @@ class ListeFleurs extends Liste {
     }
 
     /**
-     * Fourni une liste en HTML dropdown.
+     * Fourni une liste.
      */
     public function getListe(){
         $this->setRequete("select * from fleurs");

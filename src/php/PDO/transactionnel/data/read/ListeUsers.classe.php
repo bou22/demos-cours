@@ -1,6 +1,6 @@
 <?php
 require_once 'Liste.abstract.php';
-require_once './connexion/ConnexionPDO.classe.php';
+require_once 'data/connexion/ConnexionPDO.classe.php';
 
 /**
  * Classe de récupération de la connexion sur une base de données.
@@ -20,8 +20,7 @@ class ListeUsers extends Liste {
         $this->setRequete("select id,nom from users");
         $this->selectToutes();
 
-        //PDO::FETCH_COLUMN,1 est ok ici pcq la table contient 2 colonnes.
-        return $this->liste->fetchAll(PDO::FETCH_COLUMN,1); //Avec les éléments soit fleurs soit travaux.
+        return $this->liste->fetchAll(); //Avec les éléments soit fleurs, soit travaux, soit users.
     }
 
     public function getItemById($id)
