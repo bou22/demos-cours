@@ -23,7 +23,7 @@ class ListeTableFormDelete extends ElementHtml {
         
         $html = "<table ".$paramHTML.">";
         foreach($this->liste->getSelectAll() as $key=>$value){
-            $html .= "<tr><form id='f$key' action='redirect/supprimerUser.redirect.php' method='get'><td><input type='text' name='iduser' value='$key'></td><td><input type='text' name='nomuser' value='$value'></td><td><input type='submit' value='X'></td></form></tr>";
+            $html .= "<tr><td>$key</td><td>$value</td><td><form id='f$key' action='redirect/supprimerUser.redirect.php' method='get'><input type='hidden' name='iduser' value='$key'><input type='submit' value='X'></td></form></tr>";
         }
         $html .= "</table>";
 
@@ -32,15 +32,7 @@ class ListeTableFormDelete extends ElementHtml {
 
     public function getItemById($id)
     {
-        $this->selectByid($id);
-        $fleur = $this->liste->fetchObject();
-
-        // Ici aussi il y a une dépendance : le paragraphe est imposé par le code. 
-        $html  = "<p>";
-        $html .= $fleur->nom;
-        $html .= "</p>";
-
-        return $html;
+        // à faire
     }
 
 }

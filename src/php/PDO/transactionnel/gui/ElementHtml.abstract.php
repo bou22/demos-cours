@@ -14,17 +14,17 @@ abstract class ElementHtml {
     protected $liste;
 
     /**
-     * Fourni une liste en HTML dropdown.
+     * Prépare le bon objet: pattern fabrique.
      */
     public function setListeElement($typeDonnees){
 
         switch ($typeDonnees) {
             case 'fleurs':
-                $this->liste = new Fleur();
+                // $this->liste = new Fleur();
                 break;
             
         case 'travaux':
-            $this->liste = new Travaux();
+            // $this->liste = new Travaux();
             break;
 
         case 'users':

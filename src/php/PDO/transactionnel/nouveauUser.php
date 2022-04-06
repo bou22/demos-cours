@@ -51,15 +51,20 @@
     </head>
     <body>
         <h1>Réalisation de fonctions transactionnelles: requêtes en écriture sur la base de données</h1>
-        <h2><a href="nouveauUser.php">Ajouter un utilisateur</a></h2>
+        <h2>Ajouter un nouvelle utilisateur</h2>
+
+        <form action="./redirect/ajouterUser.redirect.php" method="post">
+            <input type="text" name="nom">
+            <input type="password" name="mdp">
+            <input type="submit" value="Ajouter">
+        </form>
 
         <?php
             require_once 'gui/ListeSelect.classe.php';
             require_once 'gui/ListeTable.classe.php';
             require_once 'gui/ListeTableFormDelete.classe.php';
             
-
-            $user = new ListeTableFormDelete();
+            $user = new ListeTable();
             
             echo $user->getElementHtml("users","name='travaux' id='travaux' class='selectFormatPetit'");
             
