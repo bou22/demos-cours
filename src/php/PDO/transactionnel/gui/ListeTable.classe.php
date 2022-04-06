@@ -32,15 +32,15 @@ class Listetable extends ElementHtml {
 
     public function getItemById($id)
     {
-        $this->selectByid($id);
-        $fleur = $this->liste->fetchObject();
+        // $this->selectByid($id);
+        // $fleur = $this->liste->fetchObject();
 
-        // Ici aussi il y a une dépendance : le paragraphe est imposé par le code. 
-        $html  = "<p>";
-        $html .= $fleur->nom;
-        $html .= "</p>";
+        // // Ici aussi il y a une dépendance : le paragraphe est imposé par le code. 
+        // $html  = "<p>";
+        // $html .= $fleur->nom;
+        // $html .= "</p>";
 
-        return $html;
+        // return $html;
     }
 
 }
