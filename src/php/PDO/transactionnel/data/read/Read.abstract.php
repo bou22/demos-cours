@@ -5,7 +5,7 @@
  * @author Claude
  */
 
-abstract class Liste {
+abstract class Read {
     protected $liste;
     protected $connexion;
     protected $requete;
@@ -55,6 +55,6 @@ abstract class Liste {
     }
 }
 
-require_once 'ListeFleurs.classe.php';
-require_once 'ListeTravaux.classe.php';
-require_once 'ListeUsers.classe.php';
+require_once 'ReadFleurs.classe.php';
+require_once 'ReadTravaux.classe.php';
+require_once 'ReadUsers.classe.php';

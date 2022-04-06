@@ -1,12 +1,12 @@
 <?php
-require_once 'Liste.abstract.php';
+require_once 'Read.abstract.php';
 require_once 'connexion/ConnexionPDO.classe.php';
 
 /**
  * Classe de récupération de la connexion sur une base de données.
  * @author Claude
  */
-class ListeFleurs extends Liste {
+class ReadFleurs extends Read {
 
     public function __construct()
     {

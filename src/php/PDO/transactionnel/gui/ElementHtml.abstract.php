@@ -1,9 +1,9 @@
 <?php
 
 set_include_path(get_include_path().PATH_SEPARATOR.__DIR__);
-require_once 'data/Fleur.classe.php';
-require_once 'data/Travaux.classe.php';
-require_once 'data/Users.classe.php';
+require_once 'data/FleurData.classe.php';
+require_once 'data/TacheData.classe.php';
+require_once 'data/UsersData.classe.php';
 
 /**
  * Classe de récupération de la connexion sur une base de données.
@@ -28,7 +28,7 @@ abstract class ElementHtml {
             break;
 
         case 'users':
-            $this->liste = new Users();
+            $this->liste = new UsersData();
             break;
 
         default:

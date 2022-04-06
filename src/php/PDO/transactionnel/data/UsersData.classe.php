@@ -3,17 +3,17 @@
 set_include_path(get_include_path().PATH_SEPARATOR.__DIR__);
 require_once 'write/Delete.abstract.php';
 require_once 'write/Insert.abstract.php';
-require_once 'read/ListeUsers.classe.php';
+require_once 'read/Read.abstract.php';
 require_once 'iData.interface.php';
 
-class Users implements iData 
+class UsersData implements iData 
 {
     private $user;
     private $users;
 
     public function getSelectAll(){
 
-        $dataUsers = new ListeUsers();
+        $dataUsers = new ReadUsers();
         $this->users = $dataUsers->getListe();
 
         $retour = array();

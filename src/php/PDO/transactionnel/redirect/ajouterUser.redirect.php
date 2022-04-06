@@ -21,8 +21,8 @@ if ($donneesRequeteOk){
     $objet->nom = $nom;
     $objet->mdp = password_hash($mdp, PASSWORD_DEFAULT);
 
-    require_once '../data/Users.classe.php';
-    $user = new Users();
+    require_once '../data/UsersData.classe.php';
+    $user = new UsersData();
     
     if ($user->insererUnElement($objet)){
         header("Location: ../index.php?requete=ok");
