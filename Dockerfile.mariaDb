@@ -1,0 +1,2 @@
+FROM mariadb:latest
+COPY ./php/pdo/BdFleurs.sql /docker-entrypoint-initdb.d/

@@ -1,10 +1,12 @@
 <?php
+
 /**
  * Description de Connexion
- * Classe de récupération de la connexion sur une base de données.
+ * Classe de récupération/fermeture de la connexion sur une base de données.
  * @author Claude
  */
 abstract class Connexion {
+
     protected $connexion;
     
     abstract public function getConnexion();

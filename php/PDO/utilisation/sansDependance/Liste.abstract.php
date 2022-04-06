@@ -1,22 +1,22 @@
 <?php
-require_once './ConnexionDemo.classe.php';
-
 /**
  * Description de ListeFleurs
  * Classe de récupération des noms de fleurs sur une bd.
  * @author Claude
  */
-abstract class ListeFleurs {
+
+abstract class Liste {
     protected $liste;
     protected $connexion;
+    protected $requete;
     
     abstract public function getListe();
-    abstract public function getFleurById($id);
+    abstract public function getItemById($id);
 
     protected function selectToutes()
     {
         try {
-            $this->liste = $this->connexion->prepare("select * from fleurs");
+            $this->liste = $this->connexion->prepare($this->requete);
     
             //La requête complétée, avec une valeur sur la variable, est passée au
             // serveur de bd, sur le schéma.
@@ -31,7 +31,7 @@ abstract class ListeFleurs {
     protected function selectById($id)
     {
         try {
-            $this->liste = $this->connexion->prepare("select * from fleurs where id=:id");
+            $this->liste = $this->connexion->prepare($this->requete);
 
             $this->liste->bindParam(":id",$id,PDO::PARAM_INT);
     
@@ -42,5 +42,9 @@ abstract class ListeFleurs {
         } catch (Exception $e){
             error_log($e->getMessage());
         }
+    }
+
+    protected function setRequete($requete){
+        $this->requete = $requete;
     }
 }
