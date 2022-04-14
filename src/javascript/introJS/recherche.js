@@ -1,4 +1,8 @@
-// Fonctions de recherche de nouveau clé dans le contenu d'une page web.
+/**
+ * Fonctions de recherche de nouveau clé dans le code html/js/css d'une page web.
+ * @param {*} motRechercher mot clé de recherche
+ */
+// 
 
 function rechercherLeMot(motRechercher) {
 
@@ -13,7 +17,7 @@ function rechercherLeMot(motRechercher) {
         let texteSansSpan = document.body.innerHTML.replace(remplacementAncien,ancien)
         document.body.innerHTML = texteSansSpan
 
-        //Ajout des surlignés si le mot exite dans le noeud texte et que le mot n'est pas une balise
+        //Ajout des surlignés si le mot existe dans le noeud texte et que le mot n'est pas une balise
         if (document.body.textContent.indexOf(nouveau) != -1 
             && document.getElementsByTagName(nouveau).length == 0){
             let remplacementNouveau = new RegExp(nouveau,'g')

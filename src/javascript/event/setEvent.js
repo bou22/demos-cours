@@ -8,12 +8,12 @@ function setEvent(){
     
     titre.addEventListener(
         "mouseover", //https://developer.mozilla.org/en-US/docs/Web/API/Element#focus_events
-        function(e){alert("Fonction anonyme");},
+        alerter,
         true
     )
     titre.addEventListener(
         "mouseout", //https://developer.mozilla.org/en-US/docs/Web/API/Element#focus_events
-        pasSurligner,
+        surligner,
         true
     )
 }
@@ -31,7 +31,9 @@ function enleverEvent(){
 
     let titre = document.getElementById("h1");
 
-    titre.removeEventListener("mouseover",surligner,true);
+    titre.removeEventListener("mouseover",alerter,true);
+    titre.removeEventListener("mouseout",surligner,true);
+    titre.style.backgroundColor = "white";
 }
 
 function surligner(e){

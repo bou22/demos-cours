@@ -1,6 +1,8 @@
-// Les fonctions utilisées pour les démos sur les bouches et array
-
-const jours = new Array("Dimance", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi");
+/**
+ * Les fonctions utilisées pour les démos sur les bouches et array
+ * Une fonction qui génère une liste UL avec du contenu itéré.
+*/
+const jours = new Array("Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi");
 
 function listeUL(liste) {
     let tableauHTML = new String("<ul>");

@@ -1,4 +1,7 @@
-// Utilisationn de la structure du DOM pour accéder à des éléments HTML
+/**
+ * Utilisation de la structure du DOM pour accéder à des éléments HTML
+ * Les fonctions manipule le contenu statique avec diverses modifications
+*/
 
 function contenuElement(noeud) {
     alert(noeud.textContent)
