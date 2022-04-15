@@ -8,6 +8,7 @@ function execute(balise) {
     contenu(balise,texte2);
     retour(balise,"FLÉCHÉE");
     console.log((t => "Texte: " + t)(balise.innerText));
+    convertirEnBold('alpha','bravo','charlie')
 }
 
 /** Déclaration classique d'une fonction dont le 2e paramètre est une fonction anonyme */
@@ -20,6 +21,10 @@ function contenu(balise,fonction) {
 let retour = (b, t) => {console.log(t + ": "+ b.innerText);}
 
 
+/** Paramètres en nombre indéfini. Le paramètre est traité comme un tableau */
+function convertirEnBold(...params) {
+    params.forEach(element => console.log(`<b>${element}</b>`))
+}
 
 
 /** Fonctions qui seront invoquées de façons anonyme */
