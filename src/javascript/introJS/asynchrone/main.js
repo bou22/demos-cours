@@ -45,6 +45,8 @@ function delaiDeRecherche(valeur,index) {
       });
 }
 
+
+/** Le délai n'est pas respecté et l'exécution échoue */
 function delaiNonRespecte(valeur,index) {
 
     let delai = Math.trunc(Math.random()*10000)
