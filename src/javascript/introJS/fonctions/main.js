@@ -1,8 +1,17 @@
+/**
+ * Démonstration des principales options sur les fonctions Javascript
+ */
+
+
+
 /** La fonction fléchée est utilisée dans le parcours de jours avec map */
 const jours = new Array("Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi");
 const joursM = jours.map(j => j.toUpperCase());
 
 
+/** C'est la fonction de tête qui est appellée de l'événement de l'interface graphique
+ *  Cette fonction appelle les autres fcts pour la démonstration
+ */
 function execute(balise) {
     contenu(balise,texte1);
     contenu(balise,texte2);
@@ -21,7 +30,10 @@ function contenu(balise,fonction) {
 let retour = (b, t) => {console.log(t + ": "+ b.innerText);}
 
 
-/** Paramètres en nombre indéfini. Le paramètre est traité comme un tableau */
+/** Paramètres en nombre indéfini. Le paramètre est traité comme un tableau
+ * console.log utilise ici l'intégration d'un gabarit ${}
+ * L'utilisation de l'accent grave(`) est prescrit pour définir la chaîne de caractères
+ */
 function convertirEnBold(...params) {
     params.forEach(element => console.log(`<b>${element}</b>`))
 }
