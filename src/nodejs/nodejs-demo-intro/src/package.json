@@ -1,0 +1,11 @@
+{
+    "name": "petite_app_web",
+    "version": "0.1.0",
+    "description": "Démo de nodejs et express",
+    "author": "Claude Boutet <claude.boutet@cegepat.qc.ca>",
+    "main": "server.mjs",
+    "dependencies": {
+      "express": "latest",
+      "cookie-session": "latest"
+    }
+}
