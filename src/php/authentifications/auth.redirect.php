@@ -1,46 +1,46 @@
 <?php
-
-if (!isset($_POST['nom'],$_POST['mdp'])){
-    //Le formulaire ne contient pas ces champs.
-    //Ceci peut arriver si la requête est réalisée avec une autre méthode que post.
-
-    setcookie("erreurAuth", "Refus de traitement.", 0, "/", "claude.techinfo420.ca", true, true);
-    header("Location: index.php");
-    //echo "refus de traitement";
+if (!empty($_POST['usr'])){
+    $usr = filter_input(INPUT_POST, "usr", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $pwd = filter_input(INPUT_POST, "pwd", FILTER_DEFAULT); //Pour le mot de passe, les caractères spéciaux sont recommandés
     
-} else if (empty($_POST['nom']) || empty($_POST['mdp'])){
-    //Les champs sont obligatoires dans le formulaire.
-    //Il faut valider sur le backend aussi.
-    setcookie("erreurAuth", "Il manque des informations pour l'authentification", 0, "/", "claude.techinfo420.ca", true, true);
-    header("Location: index.php");
-    //echo "Il manque des informations";
-    
-} else {
-    //Toutes les exigences sont atteintes, on peut vérifier 
-    //l'authentification.
+    if($usr === "Joe" && $pwd === "allo"){
+        header("Location: index.php?erreur=user");
+    } else{
+        //Aucunes erreurs la session peut être créée
 
-    require_once './Authentifier.static.php';
+        ini_set("session.cookie_lifetime", 0);
+        ini_set("session.use_cookies", 1);
+        ini_set("session.use_only_cookies" , 1);
+        ini_set("session.use_strict_mode", 1);
+        ini_set("session.cookie_httponly", 1);
+        ini_set("session.cookie_secure", 1);
+        ini_set("session.cookie_samesite" , "Strict");
+        ini_set("session.cache_limiter" , "nocache");
+        ini_set("session.sid_length" , 48);
+        ini_set("session.sid_bits_per_character" , 6);
+        ini_set("session.hash_function" , "sha512");
 
-    //Les valeurs provenant de l'extérieur du serveur doivent
-    //être considérées dangereuses et être alors soit filtrées ou validées.
-    $nom = filter_input(INPUT_POST,'nom',FILTER_SANITIZE_SPECIAL_CHARS);
-    $mdp = filter_input(INPUT_POST,'mdp',FILTER_SANITIZE_SPECIAL_CHARS);
+        define("SESSIONNAME", hash_hmac($user));
 
-    //Utilisation de la classe statique.
-    if (Authentifier::getAuthentification($nom,$mdp)){
-        /**
-         * L'authentification est acceptée.
-         */
-        //echo "C'est ok";
-        require_once 'auth.session.php';
-        setSession($nom);
-        header("Location: authentificationOK.php");
-    } else {
-        /**
-         * L'authentification est refusée.
-         */
-        setcookie("erreurAuth", "Votre identifiant n'est pas valide", 0, "/", "domaine.com", true, true);
-        header("Location: index.php");
-        //echo "Interdit";
+        if (session_status() == PHP_SESSION_NONE) {
+            session_name(SESSIONNAME);
+            session_start();
+            $_SESSION['authentification'] = TRUE;
+            $_SESSION['user'] = $usr;
+        } else {
+            session_destroy();
+            $_SESSION = array();
+
+            session_name(SESSIONNAME);
+            session_start();
+            $_SESSION['authentification'] = TRUE;
+            $_SESSION['user'] = $usr;
+        }
+        //Voir comment gérer les timestamp de session
+        header("Location: zoneprivee.php?b=".SESSIONNAME);
     }
+} else {
+    header("Location: index.php?erreur=vide");
 }
+
+

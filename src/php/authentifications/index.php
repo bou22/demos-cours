@@ -1,27 +1,45 @@
 <?php
-    if (isset($_COOKIE['erreurAuth'])){
-        $erreurAuth = filter_input(INPUT_COOKIE, "erreurAuth", FILTER_SANITIZE_SPECIAL_CHARS);
-        setcookie("erreurAuth", "", time()-3600*60*24, "/", "claude.techinfo420.ca", true, true);
-    }
+// if (!empty($_COOKIE['erreur'])){
+//     $erreur = filter_input(INPUT_COOKIE, "erreur", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+//     setcookie("erreur","",time()-3600*24);
+// }
+
+if (!empty($_GET['erreur'])){
+    $erreur = filter_input(INPUT_GET, "erreur", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+}
 
 ?>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Authentification</title>
-    </head>
+<head>
+<meta charset=utf-8>
+<title>Démo 22 février</title>
+</head>
     <body>
-        <form name="auth" action="auth.redirect.php" method="post">
-<?php
-    if (isset($erreurAuth)){
-        echo '<p style="background-color: yellow;">'.$erreurAuth.'</p>';
-    }
+        <h1>Réception des infos de formulaire</h1>
+        <form action="auth.redirect.php" method="post">
 
-    ?>          
-            <input type="text" name="nom" placeholder="Nom d'usager">
-            <input type="password" name="mdp" placeholder="Mot de passe">
-            <input type="button" value="Go" onclick="auth.submit()">
+        <?php
+            if (!empty($erreur)){
+                switch ($erreur) {
+                    case 'vide':
+                        echo "<p>Vous devez inscrire ces informations.</p>";
+                        break;
+                    case 'user':
+                        echo "<p>La combinaison usager/mot de passe n'est pas valide.</p>";
+                        break;                    
+                    default:
+                        echo "<p>Une erreur est survenue.</p>";
+                        break;
+                }
+            }
+        ?>
+
+            <label for="usr">Vous êtes ? </label><input type="text" name="usr">
+            <label for="pw">Numéro de passe ?</label><input type="text" name="pw">
+            <input type="submit">
+            <input type="reset">
         </form>
-    </body>
+</body>
 </html>
