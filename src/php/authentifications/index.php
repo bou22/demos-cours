@@ -1,10 +1,4 @@
 <?php
-// if (!empty($_COOKIE['erreur'])){
-//     $erreur = filter_input(INPUT_COOKIE, "erreur", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-
-//     setcookie("erreur","",time()-3600*24);
-// }
-
 if (!empty($_GET['erreur'])){
     $erreur = filter_input(INPUT_GET, "erreur", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 }
@@ -14,10 +8,10 @@ if (!empty($_GET['erreur'])){
 <html>
 <head>
 <meta charset=utf-8>
-<title>Démo 22 février</title>
+<title>Démo d'une authentification</title>
 </head>
     <body>
-        <h1>Réception des infos de formulaire</h1>
+        <h1>Démonstration d'une authentification protégée</h1>
         <form action="auth.redirect.php" method="post">
 
         <?php
@@ -37,7 +31,7 @@ if (!empty($_GET['erreur'])){
         ?>
 
             <label for="usr">Vous êtes ? </label><input type="text" name="usr">
-            <label for="pw">Numéro de passe ?</label><input type="text" name="pw">
+            <label for="pw">Numéro de passe ?</label><input type="password" name="pwd">
             <input type="submit">
             <input type="reset">
         </form>
