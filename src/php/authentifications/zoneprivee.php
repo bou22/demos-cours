@@ -47,7 +47,7 @@ if (!empty($_SESSION['user']) && !empty($_SESSION['authentification']) && !empty
     }
 
 } else {
-    //Les variables de la session active n'existent plus; il faut le loguer.
+    //Les variables de la session active n'existent plus; il faut le journaliser et détruire la session/cookie.
     error_log(date("d/m/Y - G:i:s",time())." L'accès à cette page a été refusé: ".__FILE__."\n",3, "/home/claude/logs/acces-application.log");
     
     $_SESSION = array();
@@ -56,7 +56,7 @@ if (!empty($_SESSION['user']) && !empty($_SESSION['authentification']) && !empty
         setcookie(session_name(), '', time() - 42000, $params["path"], $params["domain"],$params["secure"], $params["httponly"]);
     }
     session_destroy();
-    
+
     header("Location: index.php?erreur=user");
 }
 

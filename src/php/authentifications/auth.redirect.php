@@ -1,12 +1,46 @@
 <?php
+/**
+ * On commence par vérifier la présence d'anomalie dans la requête (en ajouter lorsque nécessaires).
+ */
 
-define("BDUSERS",array("Joe"=>password_hash("allo",PASSWORD_DEFAULT),"Guy"=>password_hash("lafleur",PASSWORD_DEFAULT),"radiohead"=>password_hash("okcomputor",PASSWORD_DEFAULT)));
+if (!isset($_SERVER['HTTPS'])){
+    //La requête n'est pas sur TLS: refuser et informer.
 
-if (!empty($_POST['usr'])){
+    header("Location: https://".$_SERVER['SERVER_NAME'].dirname($_SERVER['PHP_SELF'])."/index.php?erreur=tls");
+    exit;
+}
+
+if (empty($_POST['usr']) && empty($_POST['pwd'])){
+    //Il semble qu'aucune information ne soit reçue. C'est un risque de requête curl. Ça mérite une journalisation.
+
+    error_log(date("d/m/Y - G:i:s",time())." Une requête sans paramètre a été passée.\n",3, "/home/claude/logs/acces-application.log");
+    header("Location: index.php?erreur=vide");
+    exit;
+}
+
+if (empty($_POST['usr']) || empty($_POST['pwd'])){
+    //Une des informations est manquante; il faut aviser le client.
+
+    header("Location: index.php?erreur=vide");
+    exit;
+}
+
+
+
+/**
+ * À partir d'ici le traitement de l'authentification peut commencer.
+ */
+
+    //Substitue d'une base de données
+    define("BDUSERS",array("Joe"=>password_hash("allo",PASSWORD_DEFAULT),"Guy"=>password_hash("lafleur",PASSWORD_DEFAULT),"radiohead"=>password_hash("okcomputor",PASSWORD_DEFAULT)));
+
+try {    
+    // Pour faire sûr que les possibilités d'erreurs sont récupérées.
+
     $usr = filter_input(INPUT_POST, "usr", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $pwd = filter_input(INPUT_POST, "pwd", FILTER_DEFAULT); //Pour le mot de passe, les caractères spéciaux sont recommandés
+    $pwd = filter_input(INPUT_POST, "pwd", FILTER_DEFAULT); //Pour le mot de passe, les caractères spéciaux sont recommandés, donc acceptés
 
-    if(isset(BDUSERS[$usr]) && password_verify($pwd,BDUSERS[$usr])){
+    if(isset(BDUSERS[$usr]) && password_verify($pwd,BDUSERS[$usr])){ // AUTHENTIFICATION !!!
 
         //Aucunes erreurs ou mauvaise information, la session peut être créée
 
@@ -47,11 +81,17 @@ if (!empty($_POST['usr'])){
 
         header("Location: index.php?erreur=user");
     } 
-} else {
-    //Il semble qu'aucune information ne soit reçue. C'est un risque de
-    // requête curl. Ça mérite une journalisation.
+} catch (Exception $e){
+    //Une erreur non identifiée s'est produit: journaliser et détruire la session
+    error_log(date("d/m/Y - G:i:s",time())." L'authentification a échoué pour une raison inconnue.\n",3, "/home/claude/logs/acces-application.log");
+    
+    $_SESSION = array();
+    if (ini_get("session.use_cookies")) {
+        $params = session_get_cookie_params();
+        setcookie(session_name(), '', time() - 42000, $params["path"], $params["domain"],$params["secure"], $params["httponly"]);
+    }
+    session_destroy();
 
-    error_log(date("d/m/Y - G:i:s",time())." Une requête sans paramètre a été passée.\n",3, "/home/claude/logs/acces-application.log");
-    header("Location: index.php?erreur=vide");
+    header("Location: index.php?erreur=bog");
 }
 
