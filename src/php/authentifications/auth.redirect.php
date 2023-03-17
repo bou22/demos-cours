@@ -48,7 +48,8 @@ try {
     if(isset(BDUSERS[$usr]) && password_verify($pwd,BDUSERS[$usr])){ // AUTHENTIFICATION !!!
 
         //Aucunes erreurs ou mauvaise information, la session peut être créée
-
+        //https://www.php.net/manual/en/session.security.ini.php
+        
         ini_set("session.cookie_lifetime", 0);
         ini_set("session.use_cookies", 1);
         ini_set("session.use_only_cookies" , 1);
@@ -61,7 +62,7 @@ try {
         ini_set("session.sid_bits_per_character" , 6);
         ini_set("session.hash_function" , "sha512");
 
-        define("JETON", hash_hmac('sha256',time(),'dought'));
+        define("JETON", hash_hmac('sha256',time(),'dought')); //Utiliser plutôt output_add_rewrite_var() 
         session_name("demoAuth");
         
         if (session_status() == PHP_SESSION_NONE) {
