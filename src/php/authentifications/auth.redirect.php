@@ -3,27 +3,32 @@
  * On commence par vérifier la présence d'anomalie dans la requête (en ajouter lorsque nécessaires).
  */
 
-if (!isset($_SERVER['HTTPS'])){
-    //La requête n'est pas sur TLS: refuser et informer.
 
-    header("Location: https://".$_SERVER['SERVER_NAME'].dirname($_SERVER['PHP_SELF'])."/index.php?erreur=tls");
-    exit;
-}
+try { 
 
-if (empty($_POST['usr']) && empty($_POST['pwd'])){
-    //Il semble qu'aucune information ne soit reçue. C'est un risque de requête curl. Ça mérite une journalisation.
+    if (!isset($_SERVER['HTTPS'])){
+        //La requête n'est pas sur TLS: refuser et informer.
 
-    error_log(date("d/m/Y - G:i:s",time())." Une requête sans paramètre a été passée.\n",3, "/home/claude/logs/acces-application.log");
-    header("Location: index.php?erreur=vide");
-    exit;
-}
+        throw new Exception("Location: https://".$_SERVER['SERVER_NAME'].dirname($_SERVER['PHP_SELF'])."/index.php?erreur=tls");
+        //header("Location: https://".$_SERVER['SERVER_NAME'].dirname($_SERVER['PHP_SELF'])."/index.php?erreur=tls");
+        //exit;
+    }
 
-if (empty($_POST['usr']) || empty($_POST['pwd'])){
-    //Une des informations est manquante; il faut aviser le client.
+    if (empty($_POST['usr']) && empty($_POST['pwd'])){
+        //Il semble qu'aucune information ne soit reçue. C'est un risque de requête curl. Ça mérite une journalisation.
 
-    header("Location: index.php?erreur=vide");
-    exit;
-}
+        error_log(date("d/m/Y - G:i:s",time())." Une requête sans paramètre a été passée.\n",3, "/home/claude/logs/acces-application.log");
+        throw new Exception("Location: index.php?erreur=vide");
+        //header("Location: index.php?erreur=vide");
+        //exit;
+    }
+
+    if (empty($_POST['usr']) || empty($_POST['pwd'])){
+        //Une des informations est manquante; il faut aviser le client.
+        throw new Exception("Location: index.php?erreur=vide");
+        // header("Location: index.php?erreur=vide");
+        // exit;
+    }
 
 
 
@@ -34,7 +39,7 @@ if (empty($_POST['usr']) || empty($_POST['pwd'])){
     //Substitue d'une base de données
     define("BDUSERS",array("Joe"=>password_hash("allo",PASSWORD_DEFAULT),"Guy"=>password_hash("lafleur",PASSWORD_DEFAULT),"radiohead"=>password_hash("okcomputor",PASSWORD_DEFAULT)));
 
-try {    
+   
     // Pour faire sûr que les possibilités d'erreurs sont récupérées.
 
     $usr = filter_input(INPUT_POST, "usr", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -56,7 +61,7 @@ try {
         ini_set("session.sid_bits_per_character" , 6);
         ini_set("session.hash_function" , "sha512");
 
-        define("JETON", hash_hmac('sha256',time(),'allo'));
+        define("JETON", hash_hmac('sha256',time(),'dought'));
         session_name("demoAuth");
         
         if (session_status() == PHP_SESSION_NONE) {
@@ -71,27 +76,30 @@ try {
             error_log(date("d/m/Y - G:i:s",time())." L'usager: ".$usr." La session existait lors de l'authentification.\n",3, "/home/claude/logs/acces-application.log");
         }
 
-        //Voir comment gérer les timestamp de session
+        //Tout est ok
 
         error_log(date("d/m/Y - G:i:s",time())." L'usager: ".$usr." s'est authentifié.\n",3, "/home/claude/logs/acces-application.log");
+        
         header("Location: zoneprivee.php?b=".JETON);
 
     } else {        
         //La correspondance des informations est fausse.
+        throw new Exception("Location: index.php?erreur=user");
+        // header("Location: index.php?erreur=user");
+    }
 
-        header("Location: index.php?erreur=user");
-    } 
+
 } catch (Exception $e){
     //Une erreur non identifiée s'est produit: journaliser et détruire la session
-    error_log(date("d/m/Y - G:i:s",time())." L'authentification a échoué pour une raison inconnue.\n",3, "/home/claude/logs/acces-application.log");
     
-    $_SESSION = array();
-    if (ini_get("session.use_cookies")) {
-        $params = session_get_cookie_params();
-        setcookie(session_name(), '', time() - 42000, $params["path"], $params["domain"],$params["secure"], $params["httponly"]);
-    }
-    session_destroy();
+    if (session_status() === PHP_SESSION_ACTIVE) {
 
-    header("Location: index.php?erreur=bog");
+        $_SESSION = array();
+        $parametres = session_get_cookie_params();
+        setcookie(session_name(), "", time() - 42000, $parametres["path"], $parametres["domain"],$parametres["secure"], $parametres["httponly"]);
+        session_destroy();
+    }
+
+    header($e->getMessage());
 }
 
