@@ -71,7 +71,6 @@ try {
             }
 
             throw new Exception("Location: index.php?erreur=louche");
-            // header("Location: index.php?erreur=louche");
         }
 
     } else {
@@ -88,8 +87,6 @@ try {
         }
 
         throw new Exception("Location: index.php?erreur=user", 1);
-        
-        // header("Location: index.php?erreur=user");
     }
 
 } catch (Exception $e) {
@@ -105,6 +102,8 @@ try {
     }
         
     header($e->getMessage());
+
+    //Le contenu ci-dessous ne peut pas être accédé par le client.
 }
 
 ?>
@@ -117,6 +116,6 @@ try {
     <title>Zone privée</title>
 </head>
 <body>
-    <h1>Zone privé exclusive à <?php if (!empty($usr)) echo $usr; ?></h1>
+    <h1>Zone privée exclusive à <?php if (!empty($usr)) echo $usr; ?></h1>
 </body>
 </html>

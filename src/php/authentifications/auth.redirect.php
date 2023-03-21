@@ -10,8 +10,6 @@ try {
         //La requête n'est pas sur TLS: refuser et informer.
 
         throw new Exception("Location: https://".$_SERVER['SERVER_NAME'].dirname($_SERVER['PHP_SELF'])."/index.php?erreur=tls");
-        //header("Location: https://".$_SERVER['SERVER_NAME'].dirname($_SERVER['PHP_SELF'])."/index.php?erreur=tls");
-        //exit;
     }
 
     if (empty($_POST['usr']) && empty($_POST['pwd'])){
@@ -19,15 +17,11 @@ try {
 
         error_log(date("d/m/Y - G:i:s",time())." Une requête sans paramètre a été passée.\n",3, "/home/claude/logs/acces-application.log");
         throw new Exception("Location: index.php?erreur=vide");
-        //header("Location: index.php?erreur=vide");
-        //exit;
     }
 
     if (empty($_POST['usr']) || empty($_POST['pwd'])){
         //Une des informations est manquante; il faut aviser le client.
         throw new Exception("Location: index.php?erreur=vide");
-        // header("Location: index.php?erreur=vide");
-        // exit;
     }
 
 
@@ -49,7 +43,7 @@ try {
 
         //Aucunes erreurs ou mauvaise information, la session peut être créée
         //https://www.php.net/manual/en/session.security.ini.php
-        
+
         ini_set("session.cookie_lifetime", 0);
         ini_set("session.use_cookies", 1);
         ini_set("session.use_only_cookies" , 1);
@@ -77,7 +71,7 @@ try {
             error_log(date("d/m/Y - G:i:s",time())." L'usager: ".$usr." La session existait lors de l'authentification.\n",3, "/home/claude/logs/acces-application.log");
         }
 
-        //Tout est ok
+        //Tout est ok; rediriger vers la zone sécurisée
 
         error_log(date("d/m/Y - G:i:s",time())." L'usager: ".$usr." s'est authentifié.\n",3, "/home/claude/logs/acces-application.log");
         
@@ -86,7 +80,6 @@ try {
     } else {        
         //La correspondance des informations est fausse.
         throw new Exception("Location: index.php?erreur=user");
-        // header("Location: index.php?erreur=user");
     }
 
 
