@@ -148,9 +148,9 @@ try {
     <?php
         try {
             if (defined("JETON") && output_add_rewrite_var("b", JETON)){
-                echo "<a href='autrezoneprivee.php'>Index</a>";
+                echo "<a href='zoneprivee.php'>Index</a>";
     
-                echo "<form method='post' action=autrezoneprivee.php>";
+                echo "<form method='post' action=zoneprivee.php>";
                 echo "<label>Le formulaire contient un champ caché.</label>";
                 echo "</form>";
             } else {

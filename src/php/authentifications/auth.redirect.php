@@ -3,7 +3,6 @@
  * On commence par vérifier la présence d'anomalie dans la requête (en ajouter lorsque nécessaires).
  */
 
-
 try { 
 
     if (!isset($_SERVER['HTTPS'])){
@@ -56,7 +55,7 @@ try {
         ini_set("session.sid_bits_per_character" , 6);
         ini_set("session.hash_function" , "sha512");
 
-        define("JETON", hash_hmac('sha256',time(),'dought')); //Utiliser plutôt output_add_rewrite_var() 
+        define("JETON", hash_hmac('sha256',time(),'dought'));
         session_name("demoAuth");
         
         if (session_status() == PHP_SESSION_NONE) {
@@ -65,6 +64,8 @@ try {
             $_SESSION['authentification'] = TRUE;
             $_SESSION['user'] = $usr;
             $_SESSION['jeton'] = JETON;
+            $_SESSION['expiration'] = time()+10; //durée de 10sec
+            $_SESSION['ip'] = $_SERVER['REMOTE_ADDR'];
 
         } else {
             // La session existe déjà, mais ne devrait pas; ça mérite d'être journalisé
