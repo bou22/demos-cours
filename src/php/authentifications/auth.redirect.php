@@ -1,4 +1,7 @@
 <?php
+
+require_once './auth/gestionSession.include.php';
+
 /**
  * On commence par vérifier la présence d'anomalie dans la requête (en ajouter lorsque nécessaires).
  */
@@ -45,7 +48,7 @@ try {
 
         define("JETON", hash_hmac('sha256',time(),'dought'));
 
-        if (setSessionUtilisateur($usr,JETON)){
+        if (setNouvelleSessionUtilisateur($usr,JETON)){
             //Tout est ok; rediriger vers la zone sécurisée
 
             error_log(date("d/m/Y - G:i:s",time())." L'usager: ".$usr." s'est authentifié.\n",3, "/home/claude/logs/acces-application.log");
@@ -62,15 +65,9 @@ try {
 
 
 } catch (Exception $e){
-    //Une erreur non identifiée s'est produit: journaliser et détruire la session
+    //Une erreur non identifiée s'est produite détruire la session
     
-    if (session_status() === PHP_SESSION_ACTIVE) {
-
-        $_SESSION = array();
-        $parametres = session_get_cookie_params();
-        setcookie(session_name(), "", time() - 42000, $parametres["path"], $parametres["domain"],$parametres["secure"], $parametres["httponly"]);
-        session_destroy();
-    }
+    supprimerSession();
 
     header($e->getMessage());
 }
