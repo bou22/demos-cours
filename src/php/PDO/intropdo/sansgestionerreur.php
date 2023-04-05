@@ -1,11 +1,7 @@
 <?php
 /**
- * Attention !
  * Ce script réalise une connexion sur un serveur de base de données.
- * La séquence classique de connexion et de requêtes y apparait, mais dans
- * cet état le script n'est pas utilisable pour une application backend. La sécurité
- * n'est pas gérée adéquatement et il devrait y avoir une structure de programmation
- * adéquate.
+ * La séquence classique de connexion et de requêtes y apparait.
  */
 
     $utilisateur = "le utilisateur";
