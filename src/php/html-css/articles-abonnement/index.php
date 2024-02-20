@@ -36,6 +36,34 @@
             </p>        
         </div>
     </section>
-    <section id="pied">Liens du pied de page</section>
+    <section id="pied">
+        <div>
+            <dl>
+                <dt>Liens externes</dt>
+                <dd><a href="">Titre 2</a></dd>
+                <dd><a href="">Titre 2</a></dd>
+                <dd><a href="">Titre 2</a></dd>
+                <dd><a href="">Titre 2</a></dd>
+            </dl>
+        </div>
+        <div>
+            <dl>
+                <dt>Liens externes</dt>
+                <dd><a href="">Titre 2</a></dd>
+                <dd><a href="">Titre 2</a></dd>
+                <dd><a href="">Titre 2</a></dd>
+                <dd><a href="">Titre 2</a></dd>
+            </dl>
+        </div>
+        <div>
+            <dl>
+                <dt>Liens externes</dt>
+                <dd><a href="">Titre 2</a></dd>
+                <dd><a href="">Titre 2</a></dd>
+                <dd><a href="">Titre 2</a></dd>
+                <dd><a href="">Titre 2</a></dd>
+            </dl>
+        </div>
+    </section>
 </body>
 </html>
