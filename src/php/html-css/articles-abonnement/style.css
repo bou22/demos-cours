@@ -2,19 +2,36 @@
 Relatif à la mise en page d'un exercice sur les disposition
 */
 
+#principale, #pied {
+    display: block;
+}
+
+#gauche, #droit, #pied {
+    padding: 1em;
+}
+
+#gauche {
+    background-color: aquamarine;
+    float: left;
+    width: 20%;
+}
+
+#droit {
+    margin-left: 20%;
+    padding-left: 4em;
+}
+
+#pied {
+    background-color: #333;
+    color: #ccc;
+}
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     color: #333;
 }
 
-#principale, #pied {
-    display: block;
-}
-
-#gauche {
-    background-color: aquamarine;
-}
-
-#pied {
-    background-color: #333;
+#droit h1 {
+    padding: 0;
+    margin: 0;
 }

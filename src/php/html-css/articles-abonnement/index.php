@@ -9,7 +9,7 @@
 <body>
     <section id="principale">
         <div id="gauche">Articles récents</div>
-        <div id="droit">article</div>
+        <div id="droit">Titre de l'article</div>
     </section>
     <section id="pied">Liens du pied de page</section>
 </body>
