@@ -1,10 +1,20 @@
+<?php 
+    require_once 'config.include.php';
+
+    $dsn = 'mysql:dbname='.MARIADB_NOMBD.';host=127.0.0.1;charset=UTF8';
+    $bd = new PDO($dsn, MARIADB_USAGER, MARIADB_PWD);
+
+    $requete = $bd->query('select titre, texte from articles where id=2');
+    $requete->execute();
+    $article = $requete->fetchObject();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Abonnement nécesaire pour lire plus de 3 articles</title>
+    <title>Abonnement nécessaire pour lire plus de 3 articles</title>
 </head>
 <body>
     <section id="principale">
@@ -17,9 +27,11 @@
             <dt><a href="">Titre 2</a></dt>
         </div>
         <div id="droit">
-            <h1>Titre de l'article</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sapien nec sagittis aliquam malesuada bibendum arcu vitae elementum curabitur. Magna eget est lorem ipsum dolor. Venenatis tellus in metus vulputate eu scelerisque felis imperdiet proin. Faucibus et molestie ac feugiat sed lectus. Lorem ipsum dolor sit amet consectetur adipiscing elit. Lorem sed risus ultricies tristique nulla aliquet enim tortor at. Phasellus egestas tellus rutrum tellus. Arcu felis bibendum ut tristique. Nunc congue nisi vitae suscipit tellus mauris a diam maecenas. Dolor morbi non arcu risus quis varius quam.
-            </p>
+            <?php
+                echo "<h1>".$article->titre."</h1>";
+
+                echo "<p>".$article->texte."</p>";
+            ?>
       
         </div>
     </section>
