@@ -47,7 +47,7 @@ body {
     color: #ccc;
     width: 100%;
     bottom: 0;
-    position: absolute;
+    position:relative;
     display: flex;
     text-align: center;
 }
