@@ -14,7 +14,8 @@
 
         /*** Récupère un article à partir du id */
         public function getArticleById($id){
-            $requete = $this->pdo->query('select titre, texte from articles where id=2');
+            $requete = $this->pdo->prepare('select titre, texte from articles where id=:id');
+            $requete->bindValue("id",$id,PDO::PARAM_INT);
             $requete->execute();
             return $requete->fetchObject();
         }

@@ -1,8 +1,11 @@
 <?php 
     require_once './modele/Articles.classe.php';
 
+    /** Le id de l'article est récupéré de la requête GET */
+    $idArticle = filter_input(INPUT_GET,'article',FILTER_VALIDATE_INT);
+
     $articles = new Articles();
-    $article = $articles->getArticleById(1);
+    $article = $articles->getArticleById($idArticle);
     $titres = $articles->getTitres();
 
 
